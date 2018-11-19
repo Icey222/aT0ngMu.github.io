@@ -237,7 +237,7 @@
         </center>
     </div>
     <div class="content-article">
-        <h1 id="USB流量分析"><a href="#USB流量分析" class="headerlink" title="USB流量分析"></a>USB流量分析</h1><h2 id="USB接口简介"><a href="#USB接口简介" class="headerlink" title="- USB接口简介"></a>- USB接口简介</h2><h3 id="通过监听USB接口流量，可获取键盘击键，鼠标移动与点击，存储设备的明文传输通信，USB无线网卡网络传输内容等。"><a href="#通过监听USB接口流量，可获取键盘击键，鼠标移动与点击，存储设备的明文传输通信，USB无线网卡网络传输内容等。" class="headerlink" title="通过监听USB接口流量，可获取键盘击键，鼠标移动与点击，存储设备的明文传输通信，USB无线网卡网络传输内容等。"></a>通过监听USB接口流量，可获取键盘击键，鼠标移动与点击，存储设备的明文传输通信，USB无线网卡网络传输内容等。</h3><h2 id="题目"><a href="#题目" class="headerlink" title="- 题目"></a>- 题目</h2><h3 id="wireshark打开数据包后发现为usb协议"><a href="#wireshark打开数据包后发现为usb协议" class="headerlink" title="wireshark打开数据包后发现为usb协议"></a>wireshark打开数据包后发现为usb协议</h3><p><img src="https://github.com/aT0ngMu/HexoForBlog/source/pictures/1.png" alt="avatar"></p>
+        <h1 id="USB流量分析"><a href="#USB流量分析" class="headerlink" title="USB流量分析"></a>USB流量分析</h1><h2 id="USB接口简介"><a href="#USB接口简介" class="headerlink" title="- USB接口简介"></a>- USB接口简介</h2><h3 id="通过监听USB接口流量，可获取键盘击键，鼠标移动与点击，存储设备的明文传输通信，USB无线网卡网络传输内容等。"><a href="#通过监听USB接口流量，可获取键盘击键，鼠标移动与点击，存储设备的明文传输通信，USB无线网卡网络传输内容等。" class="headerlink" title="通过监听USB接口流量，可获取键盘击键，鼠标移动与点击，存储设备的明文传输通信，USB无线网卡网络传输内容等。"></a>通过监听USB接口流量，可获取键盘击键，鼠标移动与点击，存储设备的明文传输通信，USB无线网卡网络传输内容等。</h3><h2 id="题目"><a href="#题目" class="headerlink" title="- 题目"></a>- 题目</h2><h3 id="wireshark打开数据包后发现为usb协议"><a href="#wireshark打开数据包后发现为usb协议" class="headerlink" title="wireshark打开数据包后发现为usb协议"></a>wireshark打开数据包后发现为usb协议</h3><p><img src="aT0ngMu/HexoForBlog/source/pictures/1.png" alt="1"></p>
 <h3 id="USB协议数据部分在Leftover-Capture-Data域中，使用tshark命令将其单独提取出来"><a href="#USB协议数据部分在Leftover-Capture-Data域中，使用tshark命令将其单独提取出来" class="headerlink" title="USB协议数据部分在Leftover Capture Data域中，使用tshark命令将其单独提取出来"></a>USB协议数据部分在Leftover Capture Data域中，使用tshark命令将其单独提取出来</h3><pre><code>tshark -r udn.pcapng -T fields -e usb.capdata &gt; usbdata.txt
 </code></pre><h3 id="cat命令查看分离出的usbdata-txt"><a href="#cat命令查看分离出的usbdata-txt" class="headerlink" title="cat命令查看分离出的usbdata.txt"></a>cat命令查看分离出的usbdata.txt</h3><pre><code>cat usbdata.txt
 </code></pre><p><img src="HexoForBlog/source/pictures/2.png" alt="avatar"></p>
@@ -409,9 +409,9 @@ if btn_flag == 1 :
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 17.45431795095943px;" class="tag-cloud-link">原创</a>
+    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 11.201389672736521px;" class="tag-cloud-link">原创</a>
     
-    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 11.384937126301779px;" class="tag-cloud-link">流量分析</a>
+    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 15.190787005896846px;" class="tag-cloud-link">流量分析</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
