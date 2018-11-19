@@ -240,10 +240,10 @@
         <h1 id="USB流量分析"><a href="#USB流量分析" class="headerlink" title="USB流量分析"></a>USB流量分析</h1><h2 id="USB接口简介"><a href="#USB接口简介" class="headerlink" title="- USB接口简介"></a>- USB接口简介</h2><h3 id="通过监听USB接口流量，可获取键盘击键，鼠标移动与点击，存储设备的明文传输通信，USB无线网卡网络传输内容等。"><a href="#通过监听USB接口流量，可获取键盘击键，鼠标移动与点击，存储设备的明文传输通信，USB无线网卡网络传输内容等。" class="headerlink" title="通过监听USB接口流量，可获取键盘击键，鼠标移动与点击，存储设备的明文传输通信，USB无线网卡网络传输内容等。"></a>通过监听USB接口流量，可获取键盘击键，鼠标移动与点击，存储设备的明文传输通信，USB无线网卡网络传输内容等。</h3><h2 id="题目"><a href="#题目" class="headerlink" title="- 题目"></a>- 题目</h2><h3 id="wireshark打开数据包后发现为usb协议"><a href="#wireshark打开数据包后发现为usb协议" class="headerlink" title="wireshark打开数据包后发现为usb协议"></a>wireshark打开数据包后发现为usb协议</h3><p><img src="/2018/11/19/USB流量分析/1.png" alt="1"></p>
 <h3 id="USB协议数据部分在Leftover-Capture-Data域中，使用tshark命令将其单独提取出来"><a href="#USB协议数据部分在Leftover-Capture-Data域中，使用tshark命令将其单独提取出来" class="headerlink" title="USB协议数据部分在Leftover Capture Data域中，使用tshark命令将其单独提取出来"></a>USB协议数据部分在Leftover Capture Data域中，使用tshark命令将其单独提取出来</h3><pre><code>tshark -r udn.pcapng -T fields -e usb.capdata &gt; usbdata.txt
 </code></pre><h3 id="cat命令查看分离出的usbdata-txt"><a href="#cat命令查看分离出的usbdata-txt" class="headerlink" title="cat命令查看分离出的usbdata.txt"></a>cat命令查看分离出的usbdata.txt</h3><pre><code>cat usbdata.txt
-</code></pre><p><img src="/2018/11/19/USB流量分析/HexoForBlog/source/pictures/2.png" alt="avatar"></p>
+</code></pre><p><img src="/2018/11/19/USB流量分析/2.png" alt="2"></p>
 <h3 id="由于USB流量分为键盘流量和鼠标流量，而键盘数据包的数据长度为八个字节，鼠标数据包的数据长度为四个字节。"><a href="#由于USB流量分为键盘流量和鼠标流量，而键盘数据包的数据长度为八个字节，鼠标数据包的数据长度为四个字节。" class="headerlink" title="由于USB流量分为键盘流量和鼠标流量，而键盘数据包的数据长度为八个字节，鼠标数据包的数据长度为四个字节。"></a>由于USB流量分为键盘流量和鼠标流量，而键盘数据包的数据长度为八个字节，鼠标数据包的数据长度为四个字节。</h3><h3 id="键盘数据包击键信息集中在第三个字节，每次key-stroke都会产生一个keyboard-event-usb-packet。"><a href="#键盘数据包击键信息集中在第三个字节，每次key-stroke都会产生一个keyboard-event-usb-packet。" class="headerlink" title="键盘数据包击键信息集中在第三个字节，每次key stroke都会产生一个keyboard event usb packet。"></a>键盘数据包击键信息集中在第三个字节，每次key stroke都会产生一个keyboard event usb packet。</h3><h3 id="鼠标数据包第一个字节代表按键，当取0×00时代表没有按键；当取0×01时代表按左键；当取0×02时代表当前按键为右键。第二个字节可看作为signed-byte类型，其最高位为符号位，当值为正时，代表鼠标右移像素位；值为负时，代表鼠标左移像素位。第三个字节代表垂直上下移动的偏移。"><a href="#鼠标数据包第一个字节代表按键，当取0×00时代表没有按键；当取0×01时代表按左键；当取0×02时代表当前按键为右键。第二个字节可看作为signed-byte类型，其最高位为符号位，当值为正时，代表鼠标右移像素位；值为负时，代表鼠标左移像素位。第三个字节代表垂直上下移动的偏移。" class="headerlink" title="鼠标数据包第一个字节代表按键，当取0×00时代表没有按键；当取0×01时代表按左键；当取0×02时代表当前按键为右键。第二个字节可看作为signed byte类型，其最高位为符号位，当值为正时，代表鼠标右移像素位；值为负时，代表鼠标左移像素位。第三个字节代表垂直上下移动的偏移。"></a>鼠标数据包第一个字节代表按键，当取0×00时代表没有按键；当取0×01时代表按左键；当取0×02时代表当前按键为右键。第二个字节可看作为signed byte类型，其最高位为符号位，当值为正时，代表鼠标右移像素位；值为负时，代表鼠标左移像素位。第三个字节代表垂直上下移动的偏移。</h3><h3 id="此题为键盘数据包"><a href="#此题为键盘数据包" class="headerlink" title="此题为键盘数据包"></a>此题为键盘数据包</h3><pre><code>友情链接USB协议，查找值与具体键位的对应关系：
 http://www.usb.org/developers/hidpage/Hut1_12v2.pdf
-</code></pre><h3 id="根据第53页-usb-keyboard映射表写脚本解码得出数据包"><a href="#根据第53页-usb-keyboard映射表写脚本解码得出数据包" class="headerlink" title="根据第53页 usb keyboard映射表写脚本解码得出数据包"></a>根据第53页 usb keyboard映射表写脚本解码得出数据包</h3><p><img src="/2018/11/19/USB流量分析/HexoForBlog/source/pictures/3.png" alt="avatar"></p>
+</code></pre><h3 id="根据第53页-usb-keyboard映射表写脚本解码得出数据包"><a href="#根据第53页-usb-keyboard映射表写脚本解码得出数据包" class="headerlink" title="根据第53页 usb keyboard映射表写脚本解码得出数据包"></a>根据第53页 usb keyboard映射表写脚本解码得出数据包</h3><p><img src="/2018/11/19/USB流量分析/3.png" alt="3"></p>
 <h3 id="上脚本"><a href="#上脚本" class="headerlink" title="上脚本"></a>上脚本</h3><pre><code>mappings = { 0x04:&quot;A&quot;,  0x05:&quot;B&quot;,  0x06:&quot;C&quot;, 0x07:&quot;D&quot;, 0x08:&quot;E&quot;, 0x09:&quot;F&quot;, 0x0A:&quot;G&quot;,  0x0B:&quot;H&quot;, 0x0C:&quot;I&quot;,  0x0D:&quot;J&quot;, 0x0E:&quot;K&quot;, 0x0F:&quot;L&quot;, 0x10:&quot;M&quot;, 0x11:&quot;N&quot;,0x12:&quot;O&quot;,  0x13:&quot;P&quot;, 0x14:&quot;Q&quot;, 0x15:&quot;R&quot;, 0x16:&quot;S&quot;, 0x17:&quot;T&quot;, 0x18:&quot;U&quot;,0x19:&quot;V&quot;, 0x1A:&quot;W&quot;, 0x1B:&quot;X&quot;, 0x1C:&quot;Y&quot;, 0x1D:&quot;Z&quot;, 0x1E:&quot;1&quot;, 0x1F:&quot;2&quot;, 0x20:&quot;3&quot;, 0x21:&quot;4&quot;, 0x22:&quot;5&quot;,  0x23:&quot;6&quot;, 0x24:&quot;7&quot;, 0x25:&quot;8&quot;, 0x26:&quot;9&quot;, 0x27:&quot;0&quot;, 0x28:&quot;\n&quot;, 0x2a:&quot;[DEL]&quot;,  0X2B:&quot;    &quot;, 0x2C:&quot; &quot;,  0x2D:&quot;-&quot;, 0x2E:&quot;=&quot;, 0x2F:&quot;[&quot;,  0x30:&quot;]&quot;,  0x31:&quot;\\&quot;, 0x32:&quot;~&quot;, 0x33:&quot;;&quot;,  0x34:&quot;&apos;&quot;, 0x36:&quot;,&quot;,  0x37:&quot;.&quot; }
 nums = []
 keys = open(&apos;usbdata.txt&apos;)
@@ -259,7 +259,7 @@ for n in nums:
     if n in mappings:
     output += mappings[n]
 print &apos;output :\n&apos; + output
-</code></pre><p><img src="/2018/11/19/USB流量分析/HexoForBlog/source/pictures/4.png" alt="avatar"></p>
+</code></pre><p><img src="/2018/11/19/USB流量分析/4.png" alt="4"></p>
 <h3 id="另附鼠标脚本"><a href="#另附鼠标脚本" class="headerlink" title="另附鼠标脚本"></a>另附鼠标脚本</h3><pre><code>nums = [] 
 keys = open(&apos;data.txt&apos;,&apos;r&apos;) 
 posx = 0 
@@ -378,13 +378,13 @@ if btn_flag == 1 :
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/aT0ngMu.github.io/2018/11/18/hello-Hexo/">hello,Hexo</a>
+                    <a href="/aT0ngMu.github.io/2018/11/18/hello-world/">Hello World</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/aT0ngMu.github.io/2018/11/18/hello-world/">Hello World</a>
+                    <a href="/aT0ngMu.github.io/2018/11/18/hello-Hexo/">hello,Hexo</a>
                 </span>
             </li>
             
@@ -409,9 +409,9 @@ if btn_flag == 1 :
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 12.130469028566909px;" class="tag-cloud-link">原创</a>
+    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 12.682861124732135px;" class="tag-cloud-link">原创</a>
     
-    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 18.286195093132562px;" class="tag-cloud-link">流量分析</a>
+    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 12.381662805164702px;" class="tag-cloud-link">流量分析</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
