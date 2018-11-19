@@ -129,11 +129,11 @@
                         
                         
                         <li>
-                            <a href="/aT0ngMu.github.io/categories/CTF/">CTF</a>
+                            <a href="/aT0ngMu.github.io/categories/渗透测试/">渗透测试</a>
                         </li>
                         
                         <li>
-                            <a href="/aT0ngMu.github.io/categories/渗透测试/">渗透测试</a>
+                            <a href="/aT0ngMu.github.io/categories/CTF/">CTF</a>
                         </li>
                         
                         
@@ -154,15 +154,15 @@
                         
                         
                         <li>
-                            <a href="/aT0ngMu.github.io/tags/原创/">原创</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/aT0ngMu.github.io/tags/流量分析/">流量分析</a>
-                        </li>
-                        
-                        <li>
                             <a href="/aT0ngMu.github.io/tags/端口扫描/">端口扫描</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/aT0ngMu.github.io/tags/信息收集/">信息收集</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/aT0ngMu.github.io/tags/PHP伪协议/">PHP伪协议</a>
                         </li>
                         
                         
@@ -249,7 +249,7 @@
         </center>
     </div>
     <div class="content-article">
-        <h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://120.24.86.145:8006/test1/" target="_blank" rel="noopener">题目链接</a></h4><h4 id="首先拿到题目后，毫无疑问，查看一下源码"><a href="#首先拿到题目后，毫无疑问，查看一下源码" class="headerlink" title="首先拿到题目后，毫无疑问，查看一下源码"></a>首先拿到题目后，毫无疑问，查看一下源码</h4><pre><code>&lt;!--  
+        <h5 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="http://120.24.86.145:8006/test1/" target="_blank" rel="noopener">题目链接</a></h5><h5 id="首先拿到题目后，毫无疑问，查看一下源码"><a href="#首先拿到题目后，毫无疑问，查看一下源码" class="headerlink" title="首先拿到题目后，毫无疑问，查看一下源码"></a>首先拿到题目后，毫无疑问，查看一下源码</h5><pre><code>&lt;!--  
 $user = $_GET[&quot;txt&quot;];  
 $file = $_GET[&quot;file&quot;];  
 $pass = $_GET[&quot;password&quot;];    
@@ -260,11 +260,11 @@ include($file); //hint.php
 echo &quot;you are not admin ! &quot;;  
 }  
 --&gt;
-</code></pre><h4 id="解读一下源码的意思："><a href="#解读一下源码的意思：" class="headerlink" title="解读一下源码的意思："></a>解读一下源码的意思：</h4><h4 id="1-get方式传入三个参数：txt，file，password"><a href="#1-get方式传入三个参数：txt，file，password" class="headerlink" title="1.get方式传入三个参数：txt，file，password"></a>1.get方式传入三个参数：txt，file，password</h4><h4 id="2-file-get-contents-函数的作用是将-user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于"><a href="#2-file-get-contents-函数的作用是将-user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于" class="headerlink" title="2.file_get_contents()函数的作用是将$user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于"></a>2.file_get_contents()函数的作用是将$user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于</h4><h4 id="welcome-to-the-bugkuctf。（三个等于号）"><a href="#welcome-to-the-bugkuctf。（三个等于号）" class="headerlink" title="welcome to the bugkuctf。（三个等于号）"></a>welcome to the bugkuctf。（三个等于号）</h4><h4 id="3-如果满足if条件，则打印输出”hello-admin-”。并且将包含的hint-php内容显示出来"><a href="#3-如果满足if条件，则打印输出”hello-admin-”。并且将包含的hint-php内容显示出来" class="headerlink" title="3.如果满足if条件，则打印输出”hello admin!”。并且将包含的hint.php内容显示出来"></a>3.如果满足if条件，则打印输出”hello admin!”。并且将包含的hint.php内容显示出来</h4><hr>
-<h4 id="在此，可以运用两个PHP的伪协议"><a href="#在此，可以运用两个PHP的伪协议" class="headerlink" title="在此，可以运用两个PHP的伪协议"></a>在此，可以运用两个PHP的伪协议</h4><h4 id="php-filter-可以进行任意文件的读取。"><a href="#php-filter-可以进行任意文件的读取。" class="headerlink" title="* php://filter         可以进行任意文件的读取。"></a>* php://filter         可以进行任意文件的读取。</h4><h4 id="有关php-filter的详细了解"><a href="#有关php-filter的详细了解" class="headerlink" title="有关php://filter的详细了解"></a><a href="https://www.leavesongs.com/PENETRATION/php-filter-magic.html" target="_blank" rel="noopener">有关php://filter的详细了解</a></h4><h4 id="php-input-可以读取没有处理过的post数据"><a href="#php-input-可以读取没有处理过的post数据" class="headerlink" title="* php://input        可以读取没有处理过的post数据"></a>* php://input        可以读取没有处理过的post数据</h4><h4 id="通过对以上代码的分析，我们有了解决思路："><a href="#通过对以上代码的分析，我们有了解决思路：" class="headerlink" title="通过对以上代码的分析，我们有了解决思路："></a>通过对以上代码的分析，我们有了解决思路：</h4><h4 id="对于file-get-contents-user-’r’-”welcome-to-the-bugkuctf”，我们可以借用php伪协议php-input，要想使user中的字符串读取出来与三等号后的内容一致，就必须使他的传入参数txt，来post-welcome-to-the-bugkuctf"><a href="#对于file-get-contents-user-’r’-”welcome-to-the-bugkuctf”，我们可以借用php伪协议php-input，要想使user中的字符串读取出来与三等号后的内容一致，就必须使他的传入参数txt，来post-welcome-to-the-bugkuctf" class="headerlink" title="* 对于file_get_contents($user,’r’)===”welcome to the bugkuctf”，我们可以借用php伪协议php://input，要想使user中的字符串读取出来与三等号后的内容一致，就必须使他的传入参数txt，来post  welcome to the bugkuctf"></a>* <strong>对于file_get_contents($user,’r’)===”welcome to the bugkuctf”，我们可以借用php伪协议php://input，要想使user中的字符串读取出来与三等号后的内容一致，就必须使他的传入参数txt，来post  welcome to the bugkuctf</strong></h4><h4 id="再来看include-file-hint-php-我们可以用php-filter来进行hint-php的base编码，从而可以读取出hint-php的base编码，从而可以读取出hint-php的内容。"><a href="#再来看include-file-hint-php-我们可以用php-filter来进行hint-php的base编码，从而可以读取出hint-php的base编码，从而可以读取出hint-php的内容。" class="headerlink" title="* 再来看include($file); //hint.php 我们可以用php://filter来进行hint.php的base编码，从而可以读取出hint.php的base编码，从而可以读取出hint.php的内容。"></a>* <strong>再来看include($file); //hint.php 我们可以用php://filter来进行hint.php的base编码，从而可以读取出hint.php的base编码，从而可以读取出hint.php的内容。</strong></h4><h4 id="构造payload"><a href="#构造payload" class="headerlink" title="构造payload:"></a>构造payload:</h4><pre><code>index.php?txt=php://input&amp;file=php://filter/read=convert.base64-encode/resource=hint.php
-</code></pre><h4 id="利用bp改包"><a href="#利用bp改包" class="headerlink" title="利用bp改包"></a>利用bp改包</h4><p><img src="/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/1.png" alt="1"></p>
-<h4 id="得到回显"><a href="#得到回显" class="headerlink" title="得到回显"></a>得到回显</h4><p><img src="/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/2.png" alt="2"></p>
-<h4 id="发现一组base64-再进行base64解码，发现又有一组代码"><a href="#发现一组base64-再进行base64解码，发现又有一组代码" class="headerlink" title="发现一组base64,再进行base64解码，发现又有一组代码"></a>发现一组base64,再进行base64解码，发现又有一组代码</h4><pre><code>#hint.php
+</code></pre><h5 id="解读一下源码的意思："><a href="#解读一下源码的意思：" class="headerlink" title="解读一下源码的意思："></a>解读一下源码的意思：</h5><h5 id="1-get方式传入三个参数：txt，file，password"><a href="#1-get方式传入三个参数：txt，file，password" class="headerlink" title="1.get方式传入三个参数：txt，file，password"></a>1.get方式传入三个参数：txt，file，password</h5><h5 id="2-file-get-contents-函数的作用是将-user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于"><a href="#2-file-get-contents-函数的作用是将-user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于" class="headerlink" title="2.file_get_contents()函数的作用是将$user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于"></a>2.file_get_contents()函数的作用是将$user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于</h5><h5 id="welcome-to-the-bugkuctf。（三个等于号）"><a href="#welcome-to-the-bugkuctf。（三个等于号）" class="headerlink" title="welcome to the bugkuctf。（三个等于号）"></a>welcome to the bugkuctf。（三个等于号）</h5><h5 id="3-如果满足if条件，则打印输出”hello-admin-”。并且将包含的hint-php内容显示出来"><a href="#3-如果满足if条件，则打印输出”hello-admin-”。并且将包含的hint-php内容显示出来" class="headerlink" title="3.如果满足if条件，则打印输出”hello admin!”。并且将包含的hint.php内容显示出来"></a>3.如果满足if条件，则打印输出”hello admin!”。并且将包含的hint.php内容显示出来</h5><hr>
+<h5 id="在此，可以运用两个PHP的伪协议"><a href="#在此，可以运用两个PHP的伪协议" class="headerlink" title="在此，可以运用两个PHP的伪协议"></a>在此，可以运用两个PHP的伪协议</h5><h5 id="php-filter-可以进行任意文件的读取。"><a href="#php-filter-可以进行任意文件的读取。" class="headerlink" title="* php://filter         可以进行任意文件的读取。"></a>* php://filter         可以进行任意文件的读取。</h5><h5 id="有关php-filter的详细了解"><a href="#有关php-filter的详细了解" class="headerlink" title="有关php://filter的详细了解"></a><a href="https://www.leavesongs.com/PENETRATION/php-filter-magic.html" target="_blank" rel="noopener">有关php://filter的详细了解</a></h5><h5 id="php-input-可以读取没有处理过的post数据"><a href="#php-input-可以读取没有处理过的post数据" class="headerlink" title="* php://input        可以读取没有处理过的post数据"></a>* php://input        可以读取没有处理过的post数据</h5><h5 id="通过对以上代码的分析，我们有了解决思路："><a href="#通过对以上代码的分析，我们有了解决思路：" class="headerlink" title="通过对以上代码的分析，我们有了解决思路："></a>通过对以上代码的分析，我们有了解决思路：</h5><h5 id="对于file-get-contents-user-’r’-”welcome-to-the-bugkuctf”，我们可以借用php伪协议php-input，要想使user中的字符串读取出来与三等号后的内容一致，就必须使他的传入参数txt，来post-welcome-to-the-bugkuctf"><a href="#对于file-get-contents-user-’r’-”welcome-to-the-bugkuctf”，我们可以借用php伪协议php-input，要想使user中的字符串读取出来与三等号后的内容一致，就必须使他的传入参数txt，来post-welcome-to-the-bugkuctf" class="headerlink" title="* 对于file_get_contents($user,’r’)===”welcome to the bugkuctf”，我们可以借用php伪协议php://input，要想使user中的字符串读取出来与三等号后的内容一致，就必须使他的传入参数txt，来post  welcome to the bugkuctf"></a>* <strong>对于file_get_contents($user,’r’)===”welcome to the bugkuctf”，我们可以借用php伪协议php://input，要想使user中的字符串读取出来与三等号后的内容一致，就必须使他的传入参数txt，来post  welcome to the bugkuctf</strong></h5><h5 id="再来看include-file-hint-php-我们可以用php-filter来进行hint-php的base编码，从而可以读取出hint-php的base编码，从而可以读取出hint-php的内容。"><a href="#再来看include-file-hint-php-我们可以用php-filter来进行hint-php的base编码，从而可以读取出hint-php的base编码，从而可以读取出hint-php的内容。" class="headerlink" title="* 再来看include($file); //hint.php 我们可以用php://filter来进行hint.php的base编码，从而可以读取出hint.php的base编码，从而可以读取出hint.php的内容。"></a>* <strong>再来看include($file); //hint.php 我们可以用php://filter来进行hint.php的base编码，从而可以读取出hint.php的base编码，从而可以读取出hint.php的内容。</strong></h5><h5 id="构造payload"><a href="#构造payload" class="headerlink" title="构造payload:"></a>构造payload:</h5><pre><code>index.php?txt=php://input&amp;file=php://filter/read=convert.base64-encode/resource=hint.php
+</code></pre><h5 id="利用bp改包"><a href="#利用bp改包" class="headerlink" title="利用bp改包"></a>利用bp改包</h5><p><img src="/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/1.png" alt="1"></p>
+<h5 id="得到回显"><a href="#得到回显" class="headerlink" title="得到回显"></a>得到回显</h5><p><img src="/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/2.png" alt="2"></p>
+<h5 id="发现一组base64-再进行base64解码，发现又有一组代码"><a href="#发现一组base64-再进行base64解码，发现又有一组代码" class="headerlink" title="发现一组base64,再进行base64解码，发现又有一组代码"></a>发现一组base64,再进行base64解码，发现又有一组代码</h5><pre><code>#hint.php
 
 &lt;?php  
 
@@ -279,9 +279,9 @@ public function __tostring(){
 }  
 }  
 ?&gt;
-</code></pre><h4 id="再来分析这段代码"><a href="#再来分析这段代码" class="headerlink" title="再来分析这段代码"></a>再来分析这段代码</h4><h4 id="看到flag-php，猜测flag或许就从这段代码中找出。发现了比较关键的一个函数tostring-此函数的作用是将Flag类作为字符串执行时会自动执行此函数，并且将变量-file作为文件名输出文件内容。但是，这个时候发现并没有代码显示可以调用这个类，如果没有调用这个类，也就无法执行tostring-函数。而且，还有一个password参数没有用上，所以考虑，或许还会存在另一段代码。那就接着上一步，把hint-php换成index-php会有什么发现呢？"><a href="#看到flag-php，猜测flag或许就从这段代码中找出。发现了比较关键的一个函数tostring-此函数的作用是将Flag类作为字符串执行时会自动执行此函数，并且将变量-file作为文件名输出文件内容。但是，这个时候发现并没有代码显示可以调用这个类，如果没有调用这个类，也就无法执行tostring-函数。而且，还有一个password参数没有用上，所以考虑，或许还会存在另一段代码。那就接着上一步，把hint-php换成index-php会有什么发现呢？" class="headerlink" title="看到flag.php，猜测flag或许就从这段代码中找出。发现了比较关键的一个函数tostring(),此函数的作用是将Flag类作为字符串执行时会自动执行此函数，并且将变量$file作为文件名输出文件内容。但是，这个时候发现并没有代码显示可以调用这个类，如果没有调用这个类，也就无法执行tostring()函数。而且，还有一个password参数没有用上，所以考虑，或许还会存在另一段代码。那就接着上一步，把hint.php换成index.php会有什么发现呢？"></a>看到flag.php，猜测flag或许就从这段代码中找出。发现了比较关键的一个函数<strong>tostring(),此函数的作用是将Flag类作为字符串执行时会自动执行此函数，并且将变量$file作为文件名输出文件内容。但是，这个时候发现并没有代码显示可以调用这个类，如果没有调用这个类，也就无法执行</strong>tostring()函数。而且，还有一个password参数没有用上，所以考虑，或许还会存在另一段代码。那就接着上一步，把hint.php换成index.php会有什么发现呢？</h4><h4 id="果不其然，确实又有了重大发现："><a href="#果不其然，确实又有了重大发现：" class="headerlink" title="果不其然，确实又有了重大发现："></a>果不其然，确实又有了重大发现：</h4><p><img src="/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/3.png" alt="3"></p>
-<h4 id="再次得到回显"><a href="#再次得到回显" class="headerlink" title="再次得到回显"></a>再次得到回显</h4><p><img src="/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/4.png" alt="4"></p>
-<h4 id="解码后"><a href="#解码后" class="headerlink" title="解码后"></a>解码后</h4><pre><code>index.php
+</code></pre><h5 id="再来分析这段代码"><a href="#再来分析这段代码" class="headerlink" title="再来分析这段代码"></a>再来分析这段代码</h5><h5 id="看到flag-php，猜测flag或许就从这段代码中找出。发现了比较关键的一个函数tostring-此函数的作用是将Flag类作为字符串执行时会自动执行此函数，并且将变量-file作为文件名输出文件内容。但是，这个时候发现并没有代码显示可以调用这个类，如果没有调用这个类，也就无法执行tostring-函数。而且，还有一个password参数没有用上，所以考虑，或许还会存在另一段代码。那就接着上一步，把hint-php换成index-php会有什么发现呢？"><a href="#看到flag-php，猜测flag或许就从这段代码中找出。发现了比较关键的一个函数tostring-此函数的作用是将Flag类作为字符串执行时会自动执行此函数，并且将变量-file作为文件名输出文件内容。但是，这个时候发现并没有代码显示可以调用这个类，如果没有调用这个类，也就无法执行tostring-函数。而且，还有一个password参数没有用上，所以考虑，或许还会存在另一段代码。那就接着上一步，把hint-php换成index-php会有什么发现呢？" class="headerlink" title="看到flag.php，猜测flag或许就从这段代码中找出。发现了比较关键的一个函数tostring(),此函数的作用是将Flag类作为字符串执行时会自动执行此函数，并且将变量$file作为文件名输出文件内容。但是，这个时候发现并没有代码显示可以调用这个类，如果没有调用这个类，也就无法执行tostring()函数。而且，还有一个password参数没有用上，所以考虑，或许还会存在另一段代码。那就接着上一步，把hint.php换成index.php会有什么发现呢？"></a>看到flag.php，猜测flag或许就从这段代码中找出。发现了比较关键的一个函数<strong>tostring(),此函数的作用是将Flag类作为字符串执行时会自动执行此函数，并且将变量$file作为文件名输出文件内容。但是，这个时候发现并没有代码显示可以调用这个类，如果没有调用这个类，也就无法执行</strong>tostring()函数。而且，还有一个password参数没有用上，所以考虑，或许还会存在另一段代码。那就接着上一步，把hint.php换成index.php会有什么发现呢？</h5><h5 id="果不其然，确实又有了重大发现："><a href="#果不其然，确实又有了重大发现：" class="headerlink" title="果不其然，确实又有了重大发现："></a>果不其然，确实又有了重大发现：</h5><p><img src="/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/3.png" alt="3"></p>
+<h5 id="再次得到回显"><a href="#再次得到回显" class="headerlink" title="再次得到回显"></a>再次得到回显</h5><p><img src="/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/4.png" alt="4"></p>
+<h5 id="解码后"><a href="#解码后" class="headerlink" title="解码后"></a>解码后</h5><pre><code>index.php
 
 &lt;?php  
 $txt = $_GET[&quot;txt&quot;];  
@@ -316,8 +316,8 @@ include($file); //hint.php
 echo &quot;you are not admin ! &quot;;  
 }  
  --&gt;
-</code></pre><h4 id="结果发现了正则匹配函数preg-match-“-flag-“-file-，对flag进行了正则匹配。"><a href="#结果发现了正则匹配函数preg-match-“-flag-“-file-，对flag进行了正则匹配。" class="headerlink" title="结果发现了正则匹配函数preg_match(“/flag/“,$file)，对flag进行了正则匹配。"></a>结果发现了正则匹配函数preg_match(“/flag/“,$file)，对flag进行了正则匹配。</h4><h4 id="再来接着看，else代码块中又一次包含了-file-并且对-password进行反序列化。通过对上述hint-php的解读，我们就可以构造password，password为Flag类型，字符串变量file-flag-php。构造的序列化对象payload，password-O-4-”Flag”-1-s-4-”file”-s-8-”flag-php”"><a href="#再来接着看，else代码块中又一次包含了-file-并且对-password进行反序列化。通过对上述hint-php的解读，我们就可以构造password，password为Flag类型，字符串变量file-flag-php。构造的序列化对象payload，password-O-4-”Flag”-1-s-4-”file”-s-8-”flag-php”" class="headerlink" title="再来接着看，else代码块中又一次包含了$file,并且对$password进行反序列化。通过对上述hint.php的解读，我们就可以构造password，password为Flag类型，字符串变量file=flag.php。构造的序列化对象payload，password=O:4:”Flag”:1:{s:4:”file”;s:8:”flag.php”;}"></a>再来接着看，else代码块中又一次包含了$file,并且对$password进行反序列化。通过对上述hint.php的解读，我们就可以构造password，password为Flag类型，字符串变量file=flag.php。构造的序列化对象payload，password=O:4:”Flag”:1:{s:4:”file”;s:8:”flag.php”;}</h4><p><img src="/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/5.png" alt="5"></p>
-<h3 id="在这里简单说一下php的反序列化"><a href="#在这里简单说一下php的反序列化" class="headerlink" title="在这里简单说一下php的反序列化"></a>在这里简单说一下php的反序列化</h3><h4 id="将原来的某个对象进行序列化之后，从序列化后的结果中就可以知道这个对象的具体类型和值"><a href="#将原来的某个对象进行序列化之后，从序列化后的结果中就可以知道这个对象的具体类型和值" class="headerlink" title="将原来的某个对象进行序列化之后，从序列化后的结果中就可以知道这个对象的具体类型和值"></a>将原来的某个对象进行序列化之后，从序列化后的结果中就可以知道这个对象的具体类型和值</h4><h4 id="在这里简单说一下序列化后的几个字母的意思，以password-O-4-”Flag”-1-s-4-”file”-s-8-”flag-php”-为例"><a href="#在这里简单说一下序列化后的几个字母的意思，以password-O-4-”Flag”-1-s-4-”file”-s-8-”flag-php”-为例" class="headerlink" title="在这里简单说一下序列化后的几个字母的意思，以password=O:4:”Flag”:1:{s:4:”file”;s:8:”flag.php”;}为例"></a>在这里简单说一下序列化后的几个字母的意思，以password=O:4:”Flag”:1:{s:4:”file”;s:8:”flag.php”;}为例</h4><h4 id="O（大写）：对象class"><a href="#O（大写）：对象class" class="headerlink" title="* O（大写）：对象class"></a>* O（大写）：对象class</h4><h4 id="4：4个字符"><a href="#4：4个字符" class="headerlink" title="* 4：4个字符"></a>* 4：4个字符</h4><h4 id="“Flag”：对象名"><a href="#“Flag”：对象名" class="headerlink" title="* “Flag”：对象名"></a>* “Flag”：对象名</h4><h4 id="1：数量，一个"><a href="#1：数量，一个" class="headerlink" title="* 1：数量，一个"></a>* 1：数量，一个</h4><h4 id="s：string"><a href="#s：string" class="headerlink" title="* s：string"></a>* s：string</h4><h4 id="里的为参数"><a href="#里的为参数" class="headerlink" title="* {}里的为参数"></a>* {}里的为参数</h4><h4 id="反序列化可以理解为序列化的的逆运算"><a href="#反序列化可以理解为序列化的的逆运算" class="headerlink" title="反序列化可以理解为序列化的的逆运算"></a>反序列化可以理解为序列化的的逆运算</h4>
+</code></pre><h5 id="结果发现了正则匹配函数preg-match-“-flag-“-file-，对flag进行了正则匹配。"><a href="#结果发现了正则匹配函数preg-match-“-flag-“-file-，对flag进行了正则匹配。" class="headerlink" title="结果发现了正则匹配函数preg_match(“/flag/“,$file)，对flag进行了正则匹配。"></a>结果发现了正则匹配函数preg_match(“/flag/“,$file)，对flag进行了正则匹配。</h5><h5 id="再来接着看，else代码块中又一次包含了-file-并且对-password进行反序列化。通过对上述hint-php的解读，我们就可以构造password，password为Flag类型，字符串变量file-flag-php。构造的序列化对象payload，password-O-4-”Flag”-1-s-4-”file”-s-8-”flag-php”"><a href="#再来接着看，else代码块中又一次包含了-file-并且对-password进行反序列化。通过对上述hint-php的解读，我们就可以构造password，password为Flag类型，字符串变量file-flag-php。构造的序列化对象payload，password-O-4-”Flag”-1-s-4-”file”-s-8-”flag-php”" class="headerlink" title="再来接着看，else代码块中又一次包含了$file,并且对$password进行反序列化。通过对上述hint.php的解读，我们就可以构造password，password为Flag类型，字符串变量file=flag.php。构造的序列化对象payload，password=O:4:”Flag”:1:{s:4:”file”;s:8:”flag.php”;}"></a>再来接着看，else代码块中又一次包含了$file,并且对$password进行反序列化。通过对上述hint.php的解读，我们就可以构造password，password为Flag类型，字符串变量file=flag.php。构造的序列化对象payload，password=O:4:”Flag”:1:{s:4:”file”;s:8:”flag.php”;}</h5><p><img src="/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/5.png" alt="5"></p>
+<h3 id="在这里简单说一下php的反序列化"><a href="#在这里简单说一下php的反序列化" class="headerlink" title="在这里简单说一下php的反序列化"></a>在这里简单说一下php的反序列化</h3><h5 id="将原来的某个对象进行序列化之后，从序列化后的结果中就可以知道这个对象的具体类型和值"><a href="#将原来的某个对象进行序列化之后，从序列化后的结果中就可以知道这个对象的具体类型和值" class="headerlink" title="将原来的某个对象进行序列化之后，从序列化后的结果中就可以知道这个对象的具体类型和值"></a>将原来的某个对象进行序列化之后，从序列化后的结果中就可以知道这个对象的具体类型和值</h5><h5 id="在这里简单说一下序列化后的几个字母的意思，以password-O-4-”Flag”-1-s-4-”file”-s-8-”flag-php”-为例"><a href="#在这里简单说一下序列化后的几个字母的意思，以password-O-4-”Flag”-1-s-4-”file”-s-8-”flag-php”-为例" class="headerlink" title="在这里简单说一下序列化后的几个字母的意思，以password=O:4:”Flag”:1:{s:4:”file”;s:8:”flag.php”;}为例"></a>在这里简单说一下序列化后的几个字母的意思，以password=O:4:”Flag”:1:{s:4:”file”;s:8:”flag.php”;}为例</h5><h5 id="O（大写）：对象class"><a href="#O（大写）：对象class" class="headerlink" title="* O（大写）：对象class"></a>* O（大写）：对象class</h5><h5 id="4：4个字符"><a href="#4：4个字符" class="headerlink" title="* 4：4个字符"></a>* 4：4个字符</h5><h5 id="“Flag”：对象名"><a href="#“Flag”：对象名" class="headerlink" title="* “Flag”：对象名"></a>* “Flag”：对象名</h5><h5 id="1：数量，一个"><a href="#1：数量，一个" class="headerlink" title="* 1：数量，一个"></a>* 1：数量，一个</h5><h5 id="s：string"><a href="#s：string" class="headerlink" title="* s：string"></a>* s：string</h5><h5 id="里的为参数"><a href="#里的为参数" class="headerlink" title="* {}里的为参数"></a>* {}里的为参数</h5><h5 id="反序列化可以理解为序列化的的逆运算"><a href="#反序列化可以理解为序列化的的逆运算" class="headerlink" title="反序列化可以理解为序列化的的逆运算"></a>反序列化可以理解为序列化的的逆运算</h5>
     </div>
 </article>
 
@@ -410,12 +410,6 @@ echo &quot;you are not admin ! &quot;;
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/aT0ngMu.github.io/2018/11/19/USB流量分析/">USB流量分析</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/aT0ngMu.github.io/2018/11/19/信息收集之nmap常用命令/">信息收集之nmap</a>
                 </span>
             </li>
@@ -423,6 +417,12 @@ echo &quot;you are not admin ! &quot;;
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/aT0ngMu.github.io/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/">记一道集PHP伪协议&amp;PHP反序列化综合运用的CTF</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/aT0ngMu.github.io/2018/11/19/USB流量分析/">USB流量分析</a>
                 </span>
             </li>
             
@@ -447,17 +447,17 @@ echo &quot;you are not admin ! &quot;;
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 11.878950206833238px;" class="tag-cloud-link">原创</a>
+    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 15.358099016265363px;" class="tag-cloud-link">端口扫描</a>
     
-    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 16.450768659091857px;" class="tag-cloud-link">流量分析</a>
+    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 17.646496183458627px;" class="tag-cloud-link">信息收集</a>
     
-    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 19.178721103169675px;" class="tag-cloud-link">端口扫描</a>
+    <a href="/aT0ngMu.github.io/tags/PHP伪协议/" style="font-size: 14.77236230616289px;" class="tag-cloud-link">PHP伪协议</a>
     
-    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 15.530018552222394px;" class="tag-cloud-link">信息收集</a>
+    <a href="/aT0ngMu.github.io/tags/反序列化/" style="font-size: 18.868518537253998px;" class="tag-cloud-link">反序列化</a>
     
-    <a href="/aT0ngMu.github.io/tags/PHP伪协议/" style="font-size: 14.47223459814014px;" class="tag-cloud-link">PHP伪协议</a>
+    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 17.94012992948453px;" class="tag-cloud-link">原创</a>
     
-    <a href="/aT0ngMu.github.io/tags/反序列化/" style="font-size: 13.791157585273849px;" class="tag-cloud-link">反序列化</a>
+    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 9.391700530899339px;" class="tag-cloud-link">流量分析</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
