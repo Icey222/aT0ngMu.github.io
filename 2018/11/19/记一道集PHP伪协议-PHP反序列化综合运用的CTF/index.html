@@ -260,7 +260,8 @@ include($file); //hint.php
 echo &quot;you are not admin ! &quot;;  
 }  
 --&gt;
-</code></pre><h5 id="解读一下源码的意思："><a href="#解读一下源码的意思：" class="headerlink" title="解读一下源码的意思："></a>解读一下源码的意思：</h5><h5 id="1-get方式传入三个参数：txt，file，password"><a href="#1-get方式传入三个参数：txt，file，password" class="headerlink" title="1.get方式传入三个参数：txt，file，password"></a>1.get方式传入三个参数：txt，file，password</h5><h5 id="2-file-get-contents-函数的作用是将-user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于"><a href="#2-file-get-contents-函数的作用是将-user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于" class="headerlink" title="2.file_get_contents()函数的作用是将$user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于"></a>2.file_get_contents()函数的作用是将$user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于</h5><h5 id="welcome-to-the-bugkuctf。（三个等于号）"><a href="#welcome-to-the-bugkuctf。（三个等于号）" class="headerlink" title="welcome to the bugkuctf。（三个等于号）"></a>welcome to the bugkuctf。（三个等于号）</h5><h5 id="3-如果满足if条件，则打印输出”hello-admin-”。并且将包含的hint-php内容显示出来"><a href="#3-如果满足if条件，则打印输出”hello-admin-”。并且将包含的hint-php内容显示出来" class="headerlink" title="3.如果满足if条件，则打印输出”hello admin!”。并且将包含的hint.php内容显示出来"></a>3.如果满足if条件，则打印输出”hello admin!”。并且将包含的hint.php内容显示出来</h5><hr>
+</code></pre><h5 id="解读一下源码的意思："><a href="#解读一下源码的意思：" class="headerlink" title="解读一下源码的意思："></a>解读一下源码的意思：</h5><h5 id="1-get方式传入三个参数：txt，file，password"><a href="#1-get方式传入三个参数：txt，file，password" class="headerlink" title="1.get方式传入三个参数：txt，file，password"></a>1.get方式传入三个参数：txt，file，password</h5><h5 id="2-file-get-contents-函数的作用是将-user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于"><a href="#2-file-get-contents-函数的作用是将-user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于" class="headerlink" title="2.file_get_contents()函数的作用是将$user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于"></a>2.file_get_contents()函数的作用是将$user的内容读取出来，在此即为将user读取出来的内容数值与类型完全等于</h5><p>welcome to the bugkuctf。（三个等于号）</p>
+<h5 id="3-如果满足if条件，则打印输出”hello-admin-”。并且将包含的hint-php内容显示出来"><a href="#3-如果满足if条件，则打印输出”hello-admin-”。并且将包含的hint-php内容显示出来" class="headerlink" title="3.如果满足if条件，则打印输出”hello admin!”。并且将包含的hint.php内容显示出来"></a>3.如果满足if条件，则打印输出”hello admin!”。并且将包含的hint.php内容显示出来</h5><hr>
 <h5 id="在此，可以运用两个PHP的伪协议"><a href="#在此，可以运用两个PHP的伪协议" class="headerlink" title="在此，可以运用两个PHP的伪协议"></a>在此，可以运用两个PHP的伪协议</h5><h5 id="php-filter-可以进行任意文件的读取。"><a href="#php-filter-可以进行任意文件的读取。" class="headerlink" title="* php://filter         可以进行任意文件的读取。"></a>* php://filter         可以进行任意文件的读取。</h5><h5 id="有关php-filter的详细了解"><a href="#有关php-filter的详细了解" class="headerlink" title="有关php://filter的详细了解"></a><a href="https://www.leavesongs.com/PENETRATION/php-filter-magic.html" target="_blank" rel="noopener">有关php://filter的详细了解</a></h5><h5 id="php-input-可以读取没有处理过的post数据"><a href="#php-input-可以读取没有处理过的post数据" class="headerlink" title="* php://input        可以读取没有处理过的post数据"></a>* php://input        可以读取没有处理过的post数据</h5><h5 id="通过对以上代码的分析，我们有了解决思路："><a href="#通过对以上代码的分析，我们有了解决思路：" class="headerlink" title="通过对以上代码的分析，我们有了解决思路："></a>通过对以上代码的分析，我们有了解决思路：</h5><h5 id="对于file-get-contents-user-’r’-”welcome-to-the-bugkuctf”，我们可以借用php伪协议php-input，要想使user中的字符串读取出来与三等号后的内容一致，就必须使他的传入参数txt，来post-welcome-to-the-bugkuctf"><a href="#对于file-get-contents-user-’r’-”welcome-to-the-bugkuctf”，我们可以借用php伪协议php-input，要想使user中的字符串读取出来与三等号后的内容一致，就必须使他的传入参数txt，来post-welcome-to-the-bugkuctf" class="headerlink" title="* 对于file_get_contents($user,’r’)===”welcome to the bugkuctf”，我们可以借用php伪协议php://input，要想使user中的字符串读取出来与三等号后的内容一致，就必须使他的传入参数txt，来post  welcome to the bugkuctf"></a>* <strong>对于file_get_contents($user,’r’)===”welcome to the bugkuctf”，我们可以借用php伪协议php://input，要想使user中的字符串读取出来与三等号后的内容一致，就必须使他的传入参数txt，来post  welcome to the bugkuctf</strong></h5><h5 id="再来看include-file-hint-php-我们可以用php-filter来进行hint-php的base编码，从而可以读取出hint-php的base编码，从而可以读取出hint-php的内容。"><a href="#再来看include-file-hint-php-我们可以用php-filter来进行hint-php的base编码，从而可以读取出hint-php的base编码，从而可以读取出hint-php的内容。" class="headerlink" title="* 再来看include($file); //hint.php 我们可以用php://filter来进行hint.php的base编码，从而可以读取出hint.php的base编码，从而可以读取出hint.php的内容。"></a>* <strong>再来看include($file); //hint.php 我们可以用php://filter来进行hint.php的base编码，从而可以读取出hint.php的base编码，从而可以读取出hint.php的内容。</strong></h5><h5 id="构造payload"><a href="#构造payload" class="headerlink" title="构造payload:"></a>构造payload:</h5><pre><code>index.php?txt=php://input&amp;file=php://filter/read=convert.base64-encode/resource=hint.php
 </code></pre><h5 id="利用bp改包"><a href="#利用bp改包" class="headerlink" title="利用bp改包"></a>利用bp改包</h5><p><img src="/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/1.png" alt="1"></p>
 <h5 id="得到回显"><a href="#得到回显" class="headerlink" title="得到回显"></a>得到回显</h5><p><img src="/2018/11/19/记一道集PHP伪协议-PHP反序列化综合运用的CTF/2.png" alt="2"></p>
@@ -447,17 +448,17 @@ echo &quot;you are not admin ! &quot;;
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 8.264498831651004px;" class="tag-cloud-link">原创</a>
+    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 9.966694704585564px;" class="tag-cloud-link">原创</a>
     
-    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 8.517789023202642px;" class="tag-cloud-link">流量分析</a>
+    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 11.628368245635134px;" class="tag-cloud-link">流量分析</a>
     
-    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 13.33962503771837px;" class="tag-cloud-link">端口扫描</a>
+    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 15.345754263976405px;" class="tag-cloud-link">端口扫描</a>
     
-    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 18.467814251391175px;" class="tag-cloud-link">信息收集</a>
+    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 9.846564859994238px;" class="tag-cloud-link">信息收集</a>
     
-    <a href="/aT0ngMu.github.io/tags/PHP伪协议/" style="font-size: 16.400917874547744px;" class="tag-cloud-link">PHP伪协议</a>
+    <a href="/aT0ngMu.github.io/tags/PHP伪协议/" style="font-size: 11.965857600754433px;" class="tag-cloud-link">PHP伪协议</a>
     
-    <a href="/aT0ngMu.github.io/tags/反序列化/" style="font-size: 18.525014005647904px;" class="tag-cloud-link">反序列化</a>
+    <a href="/aT0ngMu.github.io/tags/反序列化/" style="font-size: 14.509717537353172px;" class="tag-cloud-link">反序列化</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
