@@ -166,6 +166,10 @@
                         </li>
                         
                         
+                        <li>
+                            <a href="/aT0ngMu.github.io/tags">...</a>
+                        </li>
+                        
                         
                     </ul>
                 </li>
@@ -208,7 +212,9 @@
             <span class="label label-gal">
                 <i class="fa fa-tags"></i>
                 
-                <a href="/aT0ngMu.github.io/tags/端口扫描/">端口扫描</a>
+                <a href="/aT0ngMu.github.io/tags/端口扫描/">端口扫描</a>, 
+                
+                <a href="/aT0ngMu.github.io/tags/信息收集/">信息收集</a>
                 
             </span>
             
@@ -233,7 +239,9 @@
                 
                 <i class="fa fa-tags"></i>
                 
-                <a href="/aT0ngMu.github.io/tags/端口扫描/">端口扫描</a>
+                <a href="/aT0ngMu.github.io/tags/端口扫描/">端口扫描</a>, 
+                
+                <a href="/aT0ngMu.github.io/tags/信息收集/">信息收集</a>
                 
                 
                 
@@ -256,8 +264,8 @@
 </code></pre><h2 id="nmap脚本使用"><a href="#nmap脚本使用" class="headerlink" title="nmap脚本使用"></a>nmap脚本使用</h2><h2 id="nmap脚本扫描时可设置”–script-类别”的方式进行扫描"><a href="#nmap脚本扫描时可设置”–script-类别”的方式进行扫描" class="headerlink" title="nmap脚本扫描时可设置”–script=类别”的方式进行扫描"></a>nmap脚本扫描时可设置”–script=类别”的方式进行扫描</h2><h3 id="auth-可作为检测部分应用弱口令，也可负责处理鉴权证书（绕开鉴权）的脚本。"><a href="#auth-可作为检测部分应用弱口令，也可负责处理鉴权证书（绕开鉴权）的脚本。" class="headerlink" title="auth:可作为检测部分应用弱口令，也可负责处理鉴权证书（绕开鉴权）的脚本。"></a>auth:可作为检测部分应用弱口令，也可负责处理鉴权证书（绕开鉴权）的脚本。</h3><pre><code>nmap --script=auth 192.168.181.129
 </code></pre><h3 id="broadcast-局域网内探测服务开启情况，如dhcp-dns-sqlserver等服务"><a href="#broadcast-局域网内探测服务开启情况，如dhcp-dns-sqlserver等服务" class="headerlink" title="broadcast:局域网内探测服务开启情况，如dhcp/dns/sqlserver等服务."></a>broadcast:局域网内探测服务开启情况，如dhcp/dns/sqlserver等服务.</h3><pre><code>nmap -n -p445 --script=broadcast 192.168.181.129
 </code></pre><h3 id="brute-提供暴力破解，如http-snmap等应用。提供的暴力破解方式可对数据库，smb-snmp等进行简单密码-的暴力猜解"><a href="#brute-提供暴力破解，如http-snmap等应用。提供的暴力破解方式可对数据库，smb-snmp等进行简单密码-的暴力猜解" class="headerlink" title="brute:提供暴力破解，如http/snmap等应用。提供的暴力破解方式可对数据库，smb,snmp等进行简单密码 的暴力猜解"></a>brute:提供暴力破解，如http/snmap等应用。提供的暴力破解方式可对数据库，smb,snmp等进行简单密码 的暴力猜解</h3><pre><code>nmap --script=brute 192.168.181.129
-</code></pre><p>###default:提供基本脚本扫描能力。默认的脚本扫描，主要搜集各种应用服务的信息，收集到后，可再针对具体服务进行攻击。<br>    nmap -sC  192.168.181.50</p>
-<h3 id="检查目标主机是否有常见漏洞"><a href="#检查目标主机是否有常见漏洞" class="headerlink" title="检查目标主机是否有常见漏洞"></a>检查目标主机是否有常见漏洞</h3><pre><code>nmap --script=vuln 192.168.181.50
+</code></pre><h3 id="default-提供基本脚本扫描能力。默认的脚本扫描，主要搜集各种应用服务的信息，收集到后，可再针对具体服务进行攻击"><a href="#default-提供基本脚本扫描能力。默认的脚本扫描，主要搜集各种应用服务的信息，收集到后，可再针对具体服务进行攻击" class="headerlink" title="default:提供基本脚本扫描能力。默认的脚本扫描，主要搜集各种应用服务的信息，收集到后，可再针对具体服务进行攻击"></a>default:提供基本脚本扫描能力。默认的脚本扫描，主要搜集各种应用服务的信息，收集到后，可再针对具体服务进行攻击</h3><pre><code>nmap -sC  192.168.181.50
+</code></pre><h3 id="检查目标主机是否有常见漏洞"><a href="#检查目标主机是否有常见漏洞" class="headerlink" title="检查目标主机是否有常见漏洞"></a>检查目标主机是否有常见漏洞</h3><pre><code>nmap --script=vuln 192.168.181.50
 </code></pre><h3 id="external-利用第三方数据库或资源，如：whois解析"><a href="#external-利用第三方数据库或资源，如：whois解析" class="headerlink" title="external:利用第三方数据库或资源，如：whois解析"></a>external:利用第三方数据库或资源，如：whois解析</h3><pre><code>nmap --script external 192.168.181.129
 </code></pre>
     </div>
@@ -401,11 +409,13 @@
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 12.569027843051058px;" class="tag-cloud-link">原创</a>
+    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 12.605811706123452px;" class="tag-cloud-link">原创</a>
     
-    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 11.98023903079717px;" class="tag-cloud-link">流量分析</a>
+    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 17.98679793771914px;" class="tag-cloud-link">流量分析</a>
     
-    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 16.670126062437063px;" class="tag-cloud-link">端口扫描</a>
+    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 15.891944701306572px;" class="tag-cloud-link">端口扫描</a>
+    
+    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 12.2487270962541px;" class="tag-cloud-link">信息收集</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
