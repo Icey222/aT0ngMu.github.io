@@ -10,7 +10,7 @@
     
     
     
-    <title>tags: 流量分析 | aT0ngMu是个小机灵鬼儿づ￣3￣</title>
+    <title>反向代理服务器-HTTP请求头中的XFF | aT0ngMu是个小机灵鬼儿づ￣3￣</title>
     <link href="”https://at0ngmu.github.io“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/aT0ngMu.github.io/css/bootstrap.min.css">
@@ -196,19 +196,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-tag">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="https://at0ngmu.github.io">aT0ngMu是个小机灵鬼儿づ￣3￣</a>
         >
-        <span>标签</span>
+        <span>反向代理服务器-HTTP请求头中的XFF</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/aT0ngMu.github.io/tags/流量分析/index.html">流量分析</a>
+                <a href="/aT0ngMu.github.io/2018/11/20/反向代理服务器-HTTP请求头中的XFF/">反向代理服务器-HTTP请求头中的XFF</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/aT0ngMu.github.io/tags/反向代理/">反向代理</a>, 
+                
+                <a href="/aT0ngMu.github.io/tags/XFF/">XFF</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-11-20
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -216,21 +233,32 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/aT0ngMu.github.io/tags/流量分析/index.html">流量分析</a>
+                    <a href="/aT0ngMu.github.io/2018/11/20/反向代理服务器-HTTP请求头中的XFF/">反向代理服务器-HTTP请求头中的XFF</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-11-20
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/aT0ngMu.github.io/tags/反向代理/">反向代理</a>, 
+                
+                <a href="/aT0ngMu.github.io/tags/XFF/">XFF</a>
+                
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-            <a href="/aT0ngMu.github.io/2018/11/19/USB流量分析/">USB流量分析</a>
-            <br>
-            
-            
-        </div>
+    <div class="content-article">
+        <h4 id="在做最基础的有关于XFF头的ctf-web题时对xff原理的简单记录"><a href="#在做最基础的有关于XFF头的ctf-web题时对xff原理的简单记录" class="headerlink" title="在做最基础的有关于XFF头的ctf-web题时对xff原理的简单记录"></a>在做最基础的有关于XFF头的ctf-web题时对xff原理的简单记录</h4><h4 id="XFF原理性认知"><a href="#XFF原理性认知" class="headerlink" title="XFF原理性认知"></a>XFF原理性认知</h4><h5 id="一、反向代理说明"><a href="#一、反向代理说明" class="headerlink" title="一、反向代理说明"></a>一、反向代理说明</h5><h5 id="反向代理即：通过代理服务器接收来自外部网络的请求，然后代理服务器再转发给内网服务器，再将内部服务器得到的结果通过代理服务器返回给外部网络的客户端。"><a href="#反向代理即：通过代理服务器接收来自外部网络的请求，然后代理服务器再转发给内网服务器，再将内部服务器得到的结果通过代理服务器返回给外部网络的客户端。" class="headerlink" title="反向代理即：通过代理服务器接收来自外部网络的请求，然后代理服务器再转发给内网服务器，再将内部服务器得到的结果通过代理服务器返回给外部网络的客户端。"></a>反向代理即：通过代理服务器接收来自外部网络的请求，然后代理服务器再转发给内网服务器，再将内部服务器得到的结果通过代理服务器返回给外部网络的客户端。</h5><h5 id="二、反向代理功能"><a href="#二、反向代理功能" class="headerlink" title="二、反向代理功能"></a>二、反向代理功能</h5><h5 id="利用反向代理可以提供WAF功能，阻止web攻击；而在大型网站中通常将反向代理作为公网访问地址，位于防火墙外部，Web服务器是内网。如果内网服务器返回错误消息，代理服务器会先行截取该消息并更改标头中列出的任何-URL，然后再将消息发送给客户机。如此可防止外部客户机获取内部内容服务器的重定向-URL。"><a href="#利用反向代理可以提供WAF功能，阻止web攻击；而在大型网站中通常将反向代理作为公网访问地址，位于防火墙外部，Web服务器是内网。如果内网服务器返回错误消息，代理服务器会先行截取该消息并更改标头中列出的任何-URL，然后再将消息发送给客户机。如此可防止外部客户机获取内部内容服务器的重定向-URL。" class="headerlink" title="利用反向代理可以提供WAF功能，阻止web攻击；而在大型网站中通常将反向代理作为公网访问地址，位于防火墙外部，Web服务器是内网。如果内网服务器返回错误消息，代理服务器会先行截取该消息并更改标头中列出的任何 URL，然后再将消息发送给客户机。如此可防止外部客户机获取内部内容服务器的重定向 URL。"></a>利用反向代理可以提供WAF功能，阻止web攻击；而在大型网站中通常将反向代理作为公网访问地址，位于防火墙外部，Web服务器是内网。如果内网服务器返回错误消息，代理服务器会先行截取该消息并更改标头中列出的任何 URL，然后再将消息发送给客户机。如此可防止外部客户机获取内部内容服务器的重定向 URL。</h5><h5 id="三、HTTP请求中源IP"><a href="#三、HTTP请求中源IP" class="headerlink" title="三、HTTP请求中源IP"></a>三、HTTP请求中源IP</h5><h5 id="从HTTP请求中获得请求者的IP地址有两种方式：Remote-Address和X-Forward-For。但是两者的安全性不通："><a href="#从HTTP请求中获得请求者的IP地址有两种方式：Remote-Address和X-Forward-For。但是两者的安全性不通：" class="headerlink" title="从HTTP请求中获得请求者的IP地址有两种方式：Remote Address和X-Forward-For。但是两者的安全性不通："></a>从HTTP请求中获得请求者的IP地址有两种方式：Remote Address和X-Forward-For。但是两者的安全性不通：</h5><h5 id="Remote-Address为HTTP请求的源地址，HTTP协议三次握手与发送响应报文时都使用的此地址，因此一旦请求者伪造Remote-Address地址，他将无法收到HTTP响应报文，此时伪造没有任何意义。这也就使得Remote-Address默认具有防篡改的功能。"><a href="#Remote-Address为HTTP请求的源地址，HTTP协议三次握手与发送响应报文时都使用的此地址，因此一旦请求者伪造Remote-Address地址，他将无法收到HTTP响应报文，此时伪造没有任何意义。这也就使得Remote-Address默认具有防篡改的功能。" class="headerlink" title="Remote Address为HTTP请求的源地址，HTTP协议三次握手与发送响应报文时都使用的此地址，因此一旦请求者伪造Remote Address地址，他将无法收到HTTP响应报文，此时伪造没有任何意义。这也就使得Remote Address默认具有防篡改的功能。"></a>Remote Address为HTTP请求的源地址，HTTP协议三次握手与发送响应报文时都使用的此地址，因此一旦请求者伪造Remote Address地址，他将无法收到HTTP响应报文，此时伪造没有任何意义。这也就使得Remote Address默认具有防篡改的功能。</h5><h5 id="而在一些大型网站中，外部网络的用户的HTTP请求会经过反向代理服务器转发给内网服务器，内网服务器这时候收到的Remote-Address地址并不是外部网络用户地址，而是反向代理服务器的IP。因此，对于内网服务器来说，无法查看用户IP，所以这时，HTTP扩展头部X-Forward-For（XFF）起到了作用。当反向代理服务器转发外部网络用户的HTTP请求时，需要将用户的真实IP地址写入到X-Forward-For中，以便后端服务能够使用。由于X-Forward-For是可修改的，所以X-Forward-For中的地址在某种程度上不可信。"><a href="#而在一些大型网站中，外部网络的用户的HTTP请求会经过反向代理服务器转发给内网服务器，内网服务器这时候收到的Remote-Address地址并不是外部网络用户地址，而是反向代理服务器的IP。因此，对于内网服务器来说，无法查看用户IP，所以这时，HTTP扩展头部X-Forward-For（XFF）起到了作用。当反向代理服务器转发外部网络用户的HTTP请求时，需要将用户的真实IP地址写入到X-Forward-For中，以便后端服务能够使用。由于X-Forward-For是可修改的，所以X-Forward-For中的地址在某种程度上不可信。" class="headerlink" title="而在一些大型网站中，外部网络的用户的HTTP请求会经过反向代理服务器转发给内网服务器，内网服务器这时候收到的Remote Address地址并不是外部网络用户地址，而是反向代理服务器的IP。因此，对于内网服务器来说，无法查看用户IP，所以这时，HTTP扩展头部X-Forward-For（XFF）起到了作用。当反向代理服务器转发外部网络用户的HTTP请求时，需要将用户的真实IP地址写入到X-Forward-For中，以便后端服务能够使用。由于X-Forward-For是可修改的，所以X-Forward-For中的地址在某种程度上不可信。"></a>而在一些大型网站中，外部网络的用户的HTTP请求会经过反向代理服务器转发给内网服务器，内网服务器这时候收到的Remote Address地址并不是外部网络用户地址，而是反向代理服务器的IP。因此，对于内网服务器来说，无法查看用户IP，所以这时，HTTP扩展头部X-Forward-For（XFF）起到了作用。当反向代理服务器转发外部网络用户的HTTP请求时，需要将用户的真实IP地址写入到X-Forward-For中，以便后端服务能够使用。由于X-Forward-For是可修改的，所以X-Forward-For中的地址在某种程度上不可信。</h5><h5 id="因此，在进行与安全有关的操作时，只能通过Remote-Address获取用户的IP地址，不能相信任何请求头。"><a href="#因此，在进行与安全有关的操作时，只能通过Remote-Address获取用户的IP地址，不能相信任何请求头。" class="headerlink" title="因此，在进行与安全有关的操作时，只能通过Remote Address获取用户的IP地址，不能相信任何请求头。"></a>因此，在进行与安全有关的操作时，只能通过Remote Address获取用户的IP地址，不能相信任何请求头。</h5><h5 id="CC代理属于正向代理："><a href="#CC代理属于正向代理：" class="headerlink" title="CC代理属于正向代理："></a>CC代理属于正向代理：</h5><p><img src="/2018/11/20/反向代理服务器-HTTP请求头中的XFF/305504-20161112120952686-765920985.png" alt="1"></p>
+
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -392,41 +420,41 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/aT0ngMu.github.io/tags/流量分析/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/aT0ngMu.github.io/2018/11/20/反向代理服务器-HTTP请求头中的XFF/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/aT0ngMu.github.io/tags/流量分析/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/aT0ngMu.github.io/2018/11/20/反向代理服务器-HTTP请求头中的XFF/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/aT0ngMu.github.io/tags/流量分析/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/aT0ngMu.github.io/2018/11/20/反向代理服务器-HTTP请求头中的XFF/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 13.88784413460555px;" class="tag-cloud-link">端口扫描</a>
+    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 15.480491499492217px;" class="tag-cloud-link">端口扫描</a>
     
-    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 8.02914111202902px;" class="tag-cloud-link">信息收集</a>
+    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 9.038162647922789px;" class="tag-cloud-link">信息收集</a>
     
-    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 15.977683325598317px;" class="tag-cloud-link">原创</a>
+    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 10.344939597763533px;" class="tag-cloud-link">原创</a>
     
-    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 19.07932103900471px;" class="tag-cloud-link">流量分析</a>
+    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 18.92378947419223px;" class="tag-cloud-link">流量分析</a>
     
-    <a href="/aT0ngMu.github.io/tags/反向代理/" style="font-size: 16.48932106358282px;" class="tag-cloud-link">反向代理</a>
+    <a href="/aT0ngMu.github.io/tags/反向代理/" style="font-size: 13.508668993436046px;" class="tag-cloud-link">反向代理</a>
     
-    <a href="/aT0ngMu.github.io/tags/XFF/" style="font-size: 13.575529095965038px;" class="tag-cloud-link">XFF</a>
+    <a href="/aT0ngMu.github.io/tags/XFF/" style="font-size: 16.294199733162678px;" class="tag-cloud-link">XFF</a>
     
-    <a href="/aT0ngMu.github.io/tags/DVWA搭建/" style="font-size: 11.827142418247998px;" class="tag-cloud-link">DVWA搭建</a>
+    <a href="/aT0ngMu.github.io/tags/DVWA搭建/" style="font-size: 17.995813899780067px;" class="tag-cloud-link">DVWA搭建</a>
     
-    <a href="/aT0ngMu.github.io/tags/lamp搭建/" style="font-size: 8.228647490546477px;" class="tag-cloud-link">lamp搭建</a>
+    <a href="/aT0ngMu.github.io/tags/lamp搭建/" style="font-size: 19.358663017549173px;" class="tag-cloud-link">lamp搭建</a>
     
-    <a href="/aT0ngMu.github.io/tags/sqli-labs/" style="font-size: 11.059931867675388px;" class="tag-cloud-link">sqli-labs</a>
+    <a href="/aT0ngMu.github.io/tags/sqli-labs/" style="font-size: 10.03685656070211px;" class="tag-cloud-link">sqli-labs</a>
     
-    <a href="/aT0ngMu.github.io/tags/PHP伪协议/" style="font-size: 18.81681523191571px;" class="tag-cloud-link">PHP伪协议</a>
+    <a href="/aT0ngMu.github.io/tags/PHP伪协议/" style="font-size: 16.422095502624337px;" class="tag-cloud-link">PHP伪协议</a>
     
-    <a href="/aT0ngMu.github.io/tags/反序列化/" style="font-size: 8.70057376128021px;" class="tag-cloud-link">反序列化</a>
+    <a href="/aT0ngMu.github.io/tags/反序列化/" style="font-size: 18.943333540977722px;" class="tag-cloud-link">反序列化</a>
     
-    <a href="/aT0ngMu.github.io/tags/大小写绕过/" style="font-size: 10.609892455180441px;" class="tag-cloud-link">大小写绕过</a>
+    <a href="/aT0ngMu.github.io/tags/大小写绕过/" style="font-size: 16.049912353465658px;" class="tag-cloud-link">大小写绕过</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
