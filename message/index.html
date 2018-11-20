@@ -10,7 +10,7 @@
     
     
     
-    <title>集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之一 | aT0ngMu是个小机灵鬼儿づ￣3￣</title>
+    <title>message | aT0ngMu是个小机灵鬼儿づ￣3￣</title>
     <link href="”https://at0ngmu.github.io“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/aT0ngMu.github.io/css/bootstrap.min.css">
@@ -196,38 +196,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    
+                    <!-- 搜索页面(尽可能接近ZanBlog搜索功能) -->
+
+
 <article class="article well article-body" id="article">
-    <div class="breadcrumb">
-        <i class="fa fa-home"></i>
-        <a href="https://at0ngmu.github.io">aT0ngMu是个小机灵鬼儿づ￣3￣</a>
-        >
-        <span>集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之一</span>
-    </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/aT0ngMu.github.io/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之一/">集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之一</a>
+                <a href="/aT0ngMu.github.io/message/index.html">message</a>
             </h1>
         </div>
         <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/aT0ngMu.github.io/tags/DVWA搭建/">DVWA搭建</a>, 
-                
-                <a href="/aT0ngMu.github.io/tags/lamp搭建/">lamp搭建</a>, 
-                
-                <a href="/aT0ngMu.github.io/tags/sqli-labs/">sqli-labs</a>
-                
-            </span>
-            
             <span class="label label-gal">
                 <i class="fa fa-calendar"></i> 2018-11-20
             </span>
-            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -235,67 +218,19 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/aT0ngMu.github.io/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之一/">集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之一</a>
+                    <a href="/aT0ngMu.github.io/message/index.html">message</a>
                 </h4>
             </div>
             <p>
                 <i class="fa fa-calendar"></i> 2018-11-20
             </p>
-            <p>
-                
-                <i class="fa fa-tags"></i>
-                
-                <a href="/aT0ngMu.github.io/tags/DVWA搭建/">DVWA搭建</a>, 
-                
-                <a href="/aT0ngMu.github.io/tags/lamp搭建/">lamp搭建</a>, 
-                
-                <a href="/aT0ngMu.github.io/tags/sqli-labs/">sqli-labs</a>
-                
-                
-                
-            </p>
         </center>
     </div>
     <div class="content-article">
-        <h4 id="众所周知，我们在搭建DVWA时，要先搭建好web环境—LAMP（Linux-Apache2-Mysql-PHP5-6）。那么以下就是LAMP具体搭建步骤及问题解决方式。"><a href="#众所周知，我们在搭建DVWA时，要先搭建好web环境—LAMP（Linux-Apache2-Mysql-PHP5-6）。那么以下就是LAMP具体搭建步骤及问题解决方式。" class="headerlink" title="众所周知，我们在搭建DVWA时，要先搭建好web环境—LAMP（Linux+Apache2+Mysql+PHP5.6）。那么以下就是LAMP具体搭建步骤及问题解决方式。"></a>众所周知，我们在搭建DVWA时，要先搭建好web环境—LAMP（Linux+Apache2+Mysql+PHP5.6）。那么以下就是LAMP具体搭建步骤及问题解决方式。</h4><h5 id="第一步，安装并配置Mysql。安装顺利的话，直接输入以下三条命令："><a href="#第一步，安装并配置Mysql。安装顺利的话，直接输入以下三条命令：" class="headerlink" title="第一步，安装并配置Mysql。安装顺利的话，直接输入以下三条命令："></a>第一步，安装并配置Mysql。安装顺利的话，直接输入以下三条命令：</h5><pre><code>sudo apt-get install mysql-server
-sudo apt isntall mysql-client
-sudo apt install libmysqlclient-dev
-</code></pre><h5 id="但总会有不顺利的情况。。。"><a href="#但总会有不顺利的情况。。。" class="headerlink" title="但总会有不顺利的情况。。。"></a>但总会有不顺利的情况。。。</h5><pre><code>eading package lists... Done
-Building dependency tree       
-   Reading state information... Done
-   Some packages could not be installed. This may mean that you have
-   requested an impossible situation or if you are using the unstable
-   distribution that some required packages have not yet been created
-   or been moved out of Incoming.
-   The following information may help to resolve the situation:
-   The following packages have unmet dependencies:
-   mysql-server : Depends: mysql-server-5.1 but it is not going to be instaed
-
-   E: Unable to correct problems, you have held broken packages.
-</code></pre><h5 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h5><pre><code>sudo vi /etc/apt/source.list
-</code></pre><h5 id="在此配置文件中上方添加以下内容："><a href="#在此配置文件中上方添加以下内容：" class="headerlink" title="在此配置文件中上方添加以下内容："></a>在此配置文件中上方添加以下内容：</h5><pre><code>deb http://mirrors.aliyun.com/ubuntu/ precise main restricted universe multiverse 
-deb http://mirrors.aliyun.com/ubuntu/ precise-security main restricted universe multiver 
-deb http://mirrors.aliyun.com/ubuntu/ precise-updates main restricted universe multiverse 
- deb http://mirrors.aliyun.com/ubuntu/ precise-proposed main restricted universe multiverse 
-               deb http://mirrors.aliyun.com/ubuntu/ precise-backports main restricted universe multiverse 
-               deb-src http://mirrors.aliyun.com/ubuntu/ precise main restricted universe multiverse 
-               deb-src http://mirrors.aliyun.com/ubuntu/ precise-security main restricted universe multiverse 
-               deb-src http://mirrors.aliyun.com/ubuntu/ precise-updates main restricted universe multiverse 
-               deb-src http://mirrors.aliyun.com/ubuntu/ precise-proposed main restricted universe multiverse 
-               deb-src http://mirrors.aliyun.com/ubuntu/ precise-backports main restricted universe multiverse
-</code></pre><h5 id="更新一下列表（这个过程比较漫长）"><a href="#更新一下列表（这个过程比较漫长）" class="headerlink" title="更新一下列表（这个过程比较漫长）"></a>更新一下列表（这个过程比较漫长）</h5><pre><code>sudo apt-get update  &amp;&amp; sudo apt-get -y upgrade
-</code></pre><h5 id="再重新执行上述三条命令"><a href="#再重新执行上述三条命令" class="headerlink" title="再重新执行上述三条命令"></a>再重新执行上述三条命令</h5><hr>
-<h5 id="下面测试一下mysql是否安装成功"><a href="#下面测试一下mysql是否安装成功" class="headerlink" title="下面测试一下mysql是否安装成功"></a>下面测试一下mysql是否安装成功</h5><pre><code>sudo netstat -tap | grep mysql
-</code></pre><h5 id="进入MySQL服务"><a href="#进入MySQL服务" class="headerlink" title="进入MySQL服务"></a>进入MySQL服务</h5><pre><code>mysql -uroot -p你的密码
-</code></pre><h5 id="第二步，安装PHP5-6。"><a href="#第二步，安装PHP5-6。" class="headerlink" title="第二步，安装PHP5.6。"></a>第二步，安装PHP5.6。</h5><h5 id="执行以下命令"><a href="#执行以下命令" class="headerlink" title="执行以下命令"></a>执行以下命令</h5><pre><code>sudo apt-get install python-software-properties 
-sudo add-apt-repository ppa:ondrej/php 
-sudo apt-get update 
-sudo apt-get -y install php5.6 php5.6-mcrypt php5.6-mbstring php5.6-curl php5.6-cli php5.6-mysql php5.6-gd php5.6-intl php5.6-xsl php5.6-zip
-</code></pre><h5 id="最后查看一下php版本"><a href="#最后查看一下php版本" class="headerlink" title="最后查看一下php版本"></a>最后查看一下php版本</h5><pre><code>php -v
-</code></pre><h5 id="第三步，安装apache2"><a href="#第三步，安装apache2" class="headerlink" title="第三步，安装apache2"></a>第三步，安装apache2</h5><pre><code>sudo apt-get install apache2
-</code></pre><h5 id="等待安装完成……"><a href="#等待安装完成……" class="headerlink" title="等待安装完成……"></a>等待安装完成……</h5>
+        
     </div>
 </article>
+
 
 
                 </div>
@@ -459,41 +394,41 @@ sudo apt-get -y install php5.6 php5.6-mcrypt php5.6-mbstring php5.6-curl php5.6-
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/aT0ngMu.github.io/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之一/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/aT0ngMu.github.io/message/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/aT0ngMu.github.io/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之一/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/aT0ngMu.github.io/message/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/aT0ngMu.github.io/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之一/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/aT0ngMu.github.io/message/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/aT0ngMu.github.io/tags/大小写绕过/" style="font-size: 15.097274919137867px;" class="tag-cloud-link">大小写绕过</a>
+    <a href="/aT0ngMu.github.io/tags/大小写绕过/" style="font-size: 13.490316921582522px;" class="tag-cloud-link">大小写绕过</a>
     
-    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 18.942320688268893px;" class="tag-cloud-link">端口扫描</a>
+    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 16.553281216413595px;" class="tag-cloud-link">端口扫描</a>
     
-    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 11.745945921819576px;" class="tag-cloud-link">信息收集</a>
+    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 16.60984007583871px;" class="tag-cloud-link">信息收集</a>
     
-    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 19.896386287435817px;" class="tag-cloud-link">原创</a>
+    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 11.540597837315318px;" class="tag-cloud-link">原创</a>
     
-    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 16.13474799574904px;" class="tag-cloud-link">流量分析</a>
+    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 13.660631402222936px;" class="tag-cloud-link">流量分析</a>
     
-    <a href="/aT0ngMu.github.io/tags/反向代理/" style="font-size: 16.485880047489516px;" class="tag-cloud-link">反向代理</a>
+    <a href="/aT0ngMu.github.io/tags/反向代理/" style="font-size: 12.94849782705999px;" class="tag-cloud-link">反向代理</a>
     
-    <a href="/aT0ngMu.github.io/tags/XFF/" style="font-size: 11.379104485873615px;" class="tag-cloud-link">XFF</a>
+    <a href="/aT0ngMu.github.io/tags/XFF/" style="font-size: 8.990725914000969px;" class="tag-cloud-link">XFF</a>
     
-    <a href="/aT0ngMu.github.io/tags/PHP伪协议/" style="font-size: 19.885016043662166px;" class="tag-cloud-link">PHP伪协议</a>
+    <a href="/aT0ngMu.github.io/tags/PHP伪协议/" style="font-size: 12.979364001031048px;" class="tag-cloud-link">PHP伪协议</a>
     
-    <a href="/aT0ngMu.github.io/tags/反序列化/" style="font-size: 8.375126734908601px;" class="tag-cloud-link">反序列化</a>
+    <a href="/aT0ngMu.github.io/tags/反序列化/" style="font-size: 19.113525391122025px;" class="tag-cloud-link">反序列化</a>
     
-    <a href="/aT0ngMu.github.io/tags/DVWA搭建/" style="font-size: 8.016014491813843px;" class="tag-cloud-link">DVWA搭建</a>
+    <a href="/aT0ngMu.github.io/tags/DVWA搭建/" style="font-size: 11.362606393431651px;" class="tag-cloud-link">DVWA搭建</a>
     
-    <a href="/aT0ngMu.github.io/tags/lamp搭建/" style="font-size: 12.418039745043618px;" class="tag-cloud-link">lamp搭建</a>
+    <a href="/aT0ngMu.github.io/tags/lamp搭建/" style="font-size: 18.95771706988544px;" class="tag-cloud-link">lamp搭建</a>
     
-    <a href="/aT0ngMu.github.io/tags/sqli-labs/" style="font-size: 14.582341482783429px;" class="tag-cloud-link">sqli-labs</a>
+    <a href="/aT0ngMu.github.io/tags/sqli-labs/" style="font-size: 17.851861507177908px;" class="tag-cloud-link">sqli-labs</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
