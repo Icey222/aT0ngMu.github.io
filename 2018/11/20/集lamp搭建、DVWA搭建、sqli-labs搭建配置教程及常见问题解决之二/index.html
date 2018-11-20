@@ -10,7 +10,7 @@
     
     
     
-    <title>404 | aT0ngMu是个小机灵鬼儿づ￣3￣</title>
+    <title>集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二 | aT0ngMu是个小机灵鬼儿づ￣3￣</title>
     <link href="”https://at0ngmu.github.io“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/aT0ngMu.github.io/css/bootstrap.min.css">
@@ -192,10 +192,108 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <!-- 搜索页面(尽可能接近ZanBlog搜索功能) -->
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://at0ngmu.github.io">aT0ngMu是个小机灵鬼儿づ￣3￣</a>
+        >
+        <span>集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/aT0ngMu.github.io/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/">集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/aT0ngMu.github.io/tags/DVWA搭建/">DVWA搭建</a>, 
+                
+                <a href="/aT0ngMu.github.io/tags/lamp搭建/">lamp搭建</a>, 
+                
+                <a href="/aT0ngMu.github.io/tags/sqli-labs/">sqli-labs</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-11-20
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/aT0ngMu.github.io/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/">集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-11-20
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/aT0ngMu.github.io/tags/DVWA搭建/">DVWA搭建</a>, 
+                
+                <a href="/aT0ngMu.github.io/tags/lamp搭建/">lamp搭建</a>, 
+                
+                <a href="/aT0ngMu.github.io/tags/sqli-labs/">sqli-labs</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <p>####在上一篇搭建好web环境后，再进行Ubuntu下DVWA的搭建，在搭建过程中会出现各种各样的问题。以下是本菜鸡在搭建过程中出现的问题以及解决办法~</p>
+<p>#####首先在GitHub下载安装DVWA，压缩包放到 /var/www/html之后解压缩<br>    atongmu@atongmu-virtual-machine:~/Downloads$ sudo cp -i DVWA-master.zip /var/www/html<br>    atongmu@atongmu-virtual-machine:/var/www/html$sudo unzip DVWA-master.zip</p>
+<p>#####在浏览器输入127.0.0.1/DVWA-master/setup.php后页面显示：需要我们修改配置文件后缀名为.php<br>    atongmu@atongmu-virtual-machine:/var/www/html/DVWA-master/config$ sudo mv config.inc.php.dist config.inc.php</p>
+<p>#####菜鸡装到这里，再重启apache2以后发现，在DVWA界面出现了很多PHP不完整代码，如同一个正常人长了天花一般触目惊心……后经分析原因是apache2无法解析PHP代码。到这里，关键一步就是：<br>    sudo apt-get install apache2<br>    sudo apt-get install php7.2<br>    sudo apt-get install libapache2-mod-php</p>
+<p>#####第三条命令的目的就是：apache缺少PHP的延展模块，所以无法解析PHP~</p>
+<p>#####之后，页面显示正常……</p>
+<p>#####下一步开始修改下面的disable and no<br><img src="/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/1.png" alt="1"></p>
+<p>#####第一处：</p>
+<pre><code>sudo vi php.ini
+把allow_url_include = off改为on
+把allow_url_fopen = off改为on
+</code></pre><p>#####第二处：</p>
+<pre><code>sudo apt-get install php7.2-gd
+sudo /etc/init.d/apache2 restart
+</code></pre><p>#####第三处</p>
+<pre><code>sudo apt-get install php7.2-mysql
+sudo /etc/init.d/apache2 restart
+</code></pre><p>#####在进行第二三处的时候请注意：搭建的dvwa的PHP版本是否是7.2，因为在之前添加apache的PHP扩展模块时，相当于安装了从5.6到7.2的所有模块，dvwa会自动匹配最高级版本，现在的PHP最高版本为7.2.</p>
+<p>#####第四处：</p>
+<pre><code>ls -al /var/www/html/DVWA-master/external/phpids/0.6/lib/IDS/tmp
+sudo /etc/init.d/apache2 restart
+sudo chmod 666 /var/www/html/DVWA-master/hackable/uploads
+sudo chmod 666 /var/www/html/DVWA-master/external/phpids/0.6/lib/IDS/tmp/phpids_log.txt
+sudo /etc/init.d/apache2 restart
+sudo chmod 666 /var/www/html/DVWA-master/config
+sudo /etc/init.d/apache2 restart
+</code></pre><p>#####之后本以为会顺利搭完……菜鸡又出现了状况…… </p>
+<p>#####在点击下面的creat databases时，页面返回是…… </p>
+<p><img src="/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/2.png" alt="2"></p>
+<p>#####之后才发现</p>
+<p><img src="/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/3.png" alt="3"></p>
+<p>#####这里的password要与MySQL一致才可以……</p>
+<p>#####重启apache，重新加载url，顺利创建……</p>
+<p>#####以下列出dvwa的默认登陆账号与密码：</p>
+<p><em>admin/password
+</em>gordonb/abc123<br><em>1337/charley
+</em>pablo/letmein<br>*smithy/password</p>
 
-<!-- 404 自定义页面 -->
-<!-- 有其他想自定义的page在这里添加判断条件, 并且写好对应的模板渲染文件 -->
+    </div>
+</article>
+
 
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
@@ -334,35 +432,35 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/aT0ngMu.github.io/404/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/aT0ngMu.github.io/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/aT0ngMu.github.io/404/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/aT0ngMu.github.io/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/aT0ngMu.github.io/404/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/aT0ngMu.github.io/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 19.84274367941295px;" class="tag-cloud-link">端口扫描</a>
+    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 14.917422412700697px;" class="tag-cloud-link">端口扫描</a>
     
-    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 14.122577401982818px;" class="tag-cloud-link">信息收集</a>
+    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 13.118376770991123px;" class="tag-cloud-link">信息收集</a>
     
-    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 9.372610573203463px;" class="tag-cloud-link">原创</a>
+    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 10.08361814675126px;" class="tag-cloud-link">原创</a>
     
-    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 17.447408984378278px;" class="tag-cloud-link">流量分析</a>
+    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 13.494452611978126px;" class="tag-cloud-link">流量分析</a>
     
-    <a href="/aT0ngMu.github.io/tags/PHP伪协议/" style="font-size: 12.569389408145927px;" class="tag-cloud-link">PHP伪协议</a>
+    <a href="/aT0ngMu.github.io/tags/PHP伪协议/" style="font-size: 11.411456581690441px;" class="tag-cloud-link">PHP伪协议</a>
     
-    <a href="/aT0ngMu.github.io/tags/反序列化/" style="font-size: 16.064973609674695px;" class="tag-cloud-link">反序列化</a>
+    <a href="/aT0ngMu.github.io/tags/反序列化/" style="font-size: 12.316851313744284px;" class="tag-cloud-link">反序列化</a>
     
-    <a href="/aT0ngMu.github.io/tags/DVWA搭建/" style="font-size: 10.823482313507828px;" class="tag-cloud-link">DVWA搭建</a>
+    <a href="/aT0ngMu.github.io/tags/DVWA搭建/" style="font-size: 10.011116149293874px;" class="tag-cloud-link">DVWA搭建</a>
     
-    <a href="/aT0ngMu.github.io/tags/lamp搭建/" style="font-size: 11.13556644871143px;" class="tag-cloud-link">lamp搭建</a>
+    <a href="/aT0ngMu.github.io/tags/lamp搭建/" style="font-size: 15.01232973779317px;" class="tag-cloud-link">lamp搭建</a>
     
-    <a href="/aT0ngMu.github.io/tags/sqli-labs/" style="font-size: 19.97572421670967px;" class="tag-cloud-link">sqli-labs</a>
+    <a href="/aT0ngMu.github.io/tags/sqli-labs/" style="font-size: 10.2852567680625px;" class="tag-cloud-link">sqli-labs</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
