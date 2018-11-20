@@ -129,11 +129,11 @@
                         
                         
                         <li>
-                            <a href="/aT0ngMu.github.io/categories/渗透测试/">渗透测试</a>
+                            <a href="/aT0ngMu.github.io/categories/CTF/">CTF</a>
                         </li>
                         
                         <li>
-                            <a href="/aT0ngMu.github.io/categories/CTF/">CTF</a>
+                            <a href="/aT0ngMu.github.io/categories/渗透测试/">渗透测试</a>
                         </li>
                         
                         
@@ -154,15 +154,15 @@
                         
                         
                         <li>
-                            <a href="/aT0ngMu.github.io/tags/端口扫描/">端口扫描</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/aT0ngMu.github.io/tags/信息收集/">信息收集</a>
-                        </li>
-                        
-                        <li>
                             <a href="/aT0ngMu.github.io/tags/原创/">原创</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/aT0ngMu.github.io/tags/流量分析/">流量分析</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/aT0ngMu.github.io/tags/端口扫描/">端口扫描</a>
                         </li>
                         
                         
@@ -253,41 +253,30 @@
         </center>
     </div>
     <div class="content-article">
-        <p>####在上一篇搭建好web环境后，再进行Ubuntu下DVWA的搭建，在搭建过程中会出现各种各样的问题。以下是本菜鸡在搭建过程中出现的问题以及解决办法~</p>
-<p>#####首先在GitHub下载安装DVWA，压缩包放到 /var/www/html之后解压缩<br>    atongmu@atongmu-virtual-machine:~/Downloads$ sudo cp -i DVWA-master.zip /var/www/html<br>    atongmu@atongmu-virtual-machine:/var/www/html$sudo unzip DVWA-master.zip</p>
-<p>#####在浏览器输入127.0.0.1/DVWA-master/setup.php后页面显示：需要我们修改配置文件后缀名为.php<br>    atongmu@atongmu-virtual-machine:/var/www/html/DVWA-master/config$ sudo mv config.inc.php.dist config.inc.php</p>
-<p>#####菜鸡装到这里，再重启apache2以后发现，在DVWA界面出现了很多PHP不完整代码，如同一个正常人长了天花一般触目惊心……后经分析原因是apache2无法解析PHP代码。到这里，关键一步就是：<br>    sudo apt-get install apache2<br>    sudo apt-get install php7.2<br>    sudo apt-get install libapache2-mod-php</p>
-<p>#####第三条命令的目的就是：apache缺少PHP的延展模块，所以无法解析PHP~</p>
-<p>#####之后，页面显示正常……</p>
-<p>#####下一步开始修改下面的disable and no<br><img src="/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/1.png" alt="1"></p>
-<p>#####第一处：</p>
-<pre><code>sudo vi php.ini
+        <h4 id="在上一篇搭建好web环境后，再进行Ubuntu下DVWA的搭建，在搭建过程中会出现各种各样的问题。以下是本菜鸡在搭建过程中出现的问题以及解决办法"><a href="#在上一篇搭建好web环境后，再进行Ubuntu下DVWA的搭建，在搭建过程中会出现各种各样的问题。以下是本菜鸡在搭建过程中出现的问题以及解决办法" class="headerlink" title="在上一篇搭建好web环境后，再进行Ubuntu下DVWA的搭建，在搭建过程中会出现各种各样的问题。以下是本菜鸡在搭建过程中出现的问题以及解决办法~"></a>在上一篇搭建好web环境后，再进行Ubuntu下DVWA的搭建，在搭建过程中会出现各种各样的问题。以下是本菜鸡在搭建过程中出现的问题以及解决办法~</h4><h5 id="首先在GitHub下载安装DVWA，压缩包放到-var-www-html之后解压缩"><a href="#首先在GitHub下载安装DVWA，压缩包放到-var-www-html之后解压缩" class="headerlink" title="首先在GitHub下载安装DVWA，压缩包放到 /var/www/html之后解压缩"></a>首先在GitHub下载安装DVWA，压缩包放到 /var/www/html之后解压缩</h5><pre><code>atongmu@atongmu-virtual-machine:~/Downloads$ sudo cp -i DVWA-master.zip /var/www/html
+atongmu@atongmu-virtual-machine:/var/www/html$sudo unzip DVWA-master.zip
+</code></pre><h5 id="在浏览器输入127-0-0-1-DVWA-master-setup-php后页面显示：需要我们修改配置文件后缀名为-php"><a href="#在浏览器输入127-0-0-1-DVWA-master-setup-php后页面显示：需要我们修改配置文件后缀名为-php" class="headerlink" title="在浏览器输入127.0.0.1/DVWA-master/setup.php后页面显示：需要我们修改配置文件后缀名为.php"></a>在浏览器输入127.0.0.1/DVWA-master/setup.php后页面显示：需要我们修改配置文件后缀名为.php</h5><pre><code>atongmu@atongmu-virtual-machine:/var/www/html/DVWA-master/config$ sudo mv config.inc.php.dist config.inc.php
+</code></pre><h5 id="菜鸡装到这里，再重启apache2以后发现，在DVWA界面出现了很多PHP不完整代码，如同一个正常人长了天花一般触目惊心……后经分析原因是apache2无法解析PHP代码。到这里，关键一步就是："><a href="#菜鸡装到这里，再重启apache2以后发现，在DVWA界面出现了很多PHP不完整代码，如同一个正常人长了天花一般触目惊心……后经分析原因是apache2无法解析PHP代码。到这里，关键一步就是：" class="headerlink" title="菜鸡装到这里，再重启apache2以后发现，在DVWA界面出现了很多PHP不完整代码，如同一个正常人长了天花一般触目惊心……后经分析原因是apache2无法解析PHP代码。到这里，关键一步就是："></a>菜鸡装到这里，再重启apache2以后发现，在DVWA界面出现了很多PHP不完整代码，如同一个正常人长了天花一般触目惊心……后经分析原因是apache2无法解析PHP代码。到这里，关键一步就是：</h5><pre><code>sudo apt-get install apache2
+sudo apt-get install php7.2
+sudo apt-get install libapache2-mod-php
+</code></pre><h5 id="第三条命令的目的就是：apache缺少PHP的延展模块，所以无法解析PHP"><a href="#第三条命令的目的就是：apache缺少PHP的延展模块，所以无法解析PHP" class="headerlink" title="第三条命令的目的就是：apache缺少PHP的延展模块，所以无法解析PHP~"></a>第三条命令的目的就是：apache缺少PHP的延展模块，所以无法解析PHP~</h5><h5 id="之后，页面显示正常……"><a href="#之后，页面显示正常……" class="headerlink" title="之后，页面显示正常……"></a>之后，页面显示正常……</h5><h5 id="下一步开始修改下面的disable-and-no"><a href="#下一步开始修改下面的disable-and-no" class="headerlink" title="下一步开始修改下面的disable and no"></a>下一步开始修改下面的disable and no</h5><p><img src="/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/1.png" alt="1"></p>
+<h5 id="第一处："><a href="#第一处：" class="headerlink" title="第一处："></a>第一处：</h5><pre><code>sudo vi php.ini
 把allow_url_include = off改为on
 把allow_url_fopen = off改为on
-</code></pre><p>#####第二处：</p>
-<pre><code>sudo apt-get install php7.2-gd
+</code></pre><h5 id="第二处："><a href="#第二处：" class="headerlink" title="第二处："></a>第二处：</h5><pre><code>sudo apt-get install php7.2-gd
 sudo /etc/init.d/apache2 restart
-</code></pre><p>#####第三处</p>
-<pre><code>sudo apt-get install php7.2-mysql
+</code></pre><h5 id="第三处"><a href="#第三处" class="headerlink" title="第三处"></a>第三处</h5><pre><code>sudo apt-get install php7.2-mysql
 sudo /etc/init.d/apache2 restart
-</code></pre><p>#####在进行第二三处的时候请注意：搭建的dvwa的PHP版本是否是7.2，因为在之前添加apache的PHP扩展模块时，相当于安装了从5.6到7.2的所有模块，dvwa会自动匹配最高级版本，现在的PHP最高版本为7.2.</p>
-<p>#####第四处：</p>
-<pre><code>ls -al /var/www/html/DVWA-master/external/phpids/0.6/lib/IDS/tmp
+</code></pre><h5 id="在进行第二三处的时候请注意：搭建的dvwa的PHP版本是否是7-2，因为在之前添加apache的PHP扩展模块时，相当于安装了从5-6到7-2的所有模块，dvwa会自动匹配最高级版本，现在的PHP最高版本为7-2"><a href="#在进行第二三处的时候请注意：搭建的dvwa的PHP版本是否是7-2，因为在之前添加apache的PHP扩展模块时，相当于安装了从5-6到7-2的所有模块，dvwa会自动匹配最高级版本，现在的PHP最高版本为7-2" class="headerlink" title="在进行第二三处的时候请注意：搭建的dvwa的PHP版本是否是7.2，因为在之前添加apache的PHP扩展模块时，相当于安装了从5.6到7.2的所有模块，dvwa会自动匹配最高级版本，现在的PHP最高版本为7.2."></a>在进行第二三处的时候请注意：搭建的dvwa的PHP版本是否是7.2，因为在之前添加apache的PHP扩展模块时，相当于安装了从5.6到7.2的所有模块，dvwa会自动匹配最高级版本，现在的PHP最高版本为7.2.</h5><h5 id="第四处："><a href="#第四处：" class="headerlink" title="第四处："></a>第四处：</h5><pre><code>ls -al /var/www/html/DVWA-master/external/phpids/0.6/lib/IDS/tmp
 sudo /etc/init.d/apache2 restart
 sudo chmod 666 /var/www/html/DVWA-master/hackable/uploads
 sudo chmod 666 /var/www/html/DVWA-master/external/phpids/0.6/lib/IDS/tmp/phpids_log.txt
 sudo /etc/init.d/apache2 restart
 sudo chmod 666 /var/www/html/DVWA-master/config
 sudo /etc/init.d/apache2 restart
-</code></pre><p>#####之后本以为会顺利搭完……菜鸡又出现了状况…… </p>
-<p>#####在点击下面的creat databases时，页面返回是…… </p>
-<p><img src="/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/2.png" alt="2"></p>
-<p>#####之后才发现</p>
-<p><img src="/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/3.png" alt="3"></p>
-<p>#####这里的password要与MySQL一致才可以……</p>
-<p>#####重启apache，重新加载url，顺利创建……</p>
-<p>#####以下列出dvwa的默认登陆账号与密码：</p>
-<p><em>admin/password
+</code></pre><h5 id="之后本以为会顺利搭完……菜鸡又出现了状况……"><a href="#之后本以为会顺利搭完……菜鸡又出现了状况……" class="headerlink" title="之后本以为会顺利搭完……菜鸡又出现了状况……"></a>之后本以为会顺利搭完……菜鸡又出现了状况……</h5><h5 id="在点击下面的creat-databases时，页面返回是……"><a href="#在点击下面的creat-databases时，页面返回是……" class="headerlink" title="在点击下面的creat databases时，页面返回是……"></a>在点击下面的creat databases时，页面返回是……</h5><p><img src="/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/2.png" alt="2"></p>
+<h5 id="之后才发现"><a href="#之后才发现" class="headerlink" title="之后才发现"></a>之后才发现</h5><p><img src="/2018/11/20/集lamp搭建、DVWA搭建、sqli-labs搭建配置教程及常见问题解决之二/3.png" alt="3"></p>
+<h5 id="这里的password要与MySQL一致才可以……"><a href="#这里的password要与MySQL一致才可以……" class="headerlink" title="这里的password要与MySQL一致才可以……"></a>这里的password要与MySQL一致才可以……</h5><h5 id="重启apache，重新加载url，顺利创建……"><a href="#重启apache，重新加载url，顺利创建……" class="headerlink" title="重启apache，重新加载url，顺利创建……"></a>重启apache，重新加载url，顺利创建……</h5><h5 id="以下列出dvwa的默认登陆账号与密码："><a href="#以下列出dvwa的默认登陆账号与密码：" class="headerlink" title="以下列出dvwa的默认登陆账号与密码："></a>以下列出dvwa的默认登陆账号与密码：</h5><p><em>admin/password
 </em>gordonb/abc123<br><em>1337/charley
 </em>pablo/letmein<br>*smithy/password</p>
 
@@ -395,13 +384,13 @@ sudo /etc/init.d/apache2 restart
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/aT0ngMu.github.io/2018/11/19/信息收集之nmap常用命令/">信息收集之nmap</a>
+                    <a href="/aT0ngMu.github.io/2018/11/19/USB流量分析/">USB流量分析</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/aT0ngMu.github.io/2018/11/19/USB流量分析/">USB流量分析</a>
+                    <a href="/aT0ngMu.github.io/2018/11/19/信息收集之nmap常用命令/">信息收集之nmap</a>
                 </span>
             </li>
             
@@ -444,23 +433,23 @@ sudo /etc/init.d/apache2 restart
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 14.917422412700697px;" class="tag-cloud-link">端口扫描</a>
+    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 12.60481277694064px;" class="tag-cloud-link">原创</a>
     
-    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 13.118376770991123px;" class="tag-cloud-link">信息收集</a>
+    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 14.345843672840793px;" class="tag-cloud-link">流量分析</a>
     
-    <a href="/aT0ngMu.github.io/tags/原创/" style="font-size: 10.08361814675126px;" class="tag-cloud-link">原创</a>
+    <a href="/aT0ngMu.github.io/tags/端口扫描/" style="font-size: 19.05827894196178px;" class="tag-cloud-link">端口扫描</a>
     
-    <a href="/aT0ngMu.github.io/tags/流量分析/" style="font-size: 13.494452611978126px;" class="tag-cloud-link">流量分析</a>
+    <a href="/aT0ngMu.github.io/tags/信息收集/" style="font-size: 10.96915585473539px;" class="tag-cloud-link">信息收集</a>
     
-    <a href="/aT0ngMu.github.io/tags/PHP伪协议/" style="font-size: 11.411456581690441px;" class="tag-cloud-link">PHP伪协议</a>
+    <a href="/aT0ngMu.github.io/tags/PHP伪协议/" style="font-size: 11.517931059642214px;" class="tag-cloud-link">PHP伪协议</a>
     
-    <a href="/aT0ngMu.github.io/tags/反序列化/" style="font-size: 12.316851313744284px;" class="tag-cloud-link">反序列化</a>
+    <a href="/aT0ngMu.github.io/tags/反序列化/" style="font-size: 15.809466342694648px;" class="tag-cloud-link">反序列化</a>
     
-    <a href="/aT0ngMu.github.io/tags/DVWA搭建/" style="font-size: 10.011116149293874px;" class="tag-cloud-link">DVWA搭建</a>
+    <a href="/aT0ngMu.github.io/tags/DVWA搭建/" style="font-size: 12.049852350556012px;" class="tag-cloud-link">DVWA搭建</a>
     
-    <a href="/aT0ngMu.github.io/tags/lamp搭建/" style="font-size: 15.01232973779317px;" class="tag-cloud-link">lamp搭建</a>
+    <a href="/aT0ngMu.github.io/tags/lamp搭建/" style="font-size: 14.090194209798419px;" class="tag-cloud-link">lamp搭建</a>
     
-    <a href="/aT0ngMu.github.io/tags/sqli-labs/" style="font-size: 10.2852567680625px;" class="tag-cloud-link">sqli-labs</a>
+    <a href="/aT0ngMu.github.io/tags/sqli-labs/" style="font-size: 19.37151050782765px;" class="tag-cloud-link">sqli-labs</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
